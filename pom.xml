@@ -19,6 +19,7 @@
         <spring.start.web.version>2.7.9</spring.start.web.version>
         <spring.start.version>2.7.18</spring.start.version>
         <ilzf.server>1.0-SNAPSHOT</ilzf.server>
+        <knife4j.version>3.0.3</knife4j.version>
     </properties>
 
     <parent>
@@ -70,6 +71,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring.start.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
 
 
