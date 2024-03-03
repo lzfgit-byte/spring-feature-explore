@@ -11,8 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class AspectApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(AspectApplication.class, args);
-        System.out.println("http://localhost:8081");
-        System.out.println("http://localhost:8081/doc.html");
     }
 
 
