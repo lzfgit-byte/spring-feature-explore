@@ -1,10 +1,9 @@
 package com.ilzf.starter.config;
 
-import com.ilzf.starter.event.ILzfPostConstruct;
-import com.ilzf.starter.event.ILzfWebServerInitializedEvent;
-import com.ilzf.starter.event.IlzfCommandLineRunner;
+import com.ilzf.starter.event.*;
 import com.ilzf.starter.properties.ILzfServerProperties;
 import com.ilzf.starter.service.ILzfService;
+import com.ilzf.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -14,7 +13,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnClass(ILzfService.class)
-@EnableConfigurationProperties(ILzfServerProperties.class)//注册该类同级的bean，让spring自动扫描
+//注册该类同级的bean，让spring自动扫描.但是只能是@ConfigurationProperties 注解的bean
+@EnableConfigurationProperties(ILzfServerProperties.class)
 public class ILzfEnableAutoConfig {
     // 有这个bean的时候注入
     @Autowired
@@ -25,7 +25,7 @@ public class ILzfEnableAutoConfig {
     @Bean
     @ConditionalOnMissingBean
     public ILzfService iLzfService() {
-        System.out.println("-----注册ILzfService------");
+        LogUtil.log("注册ILzfService");
         return new ILzfService(properties.getName());
     }
 
@@ -45,5 +45,17 @@ public class ILzfEnableAutoConfig {
     @ConditionalOnMissingBean
     public ILzfPostConstruct iLzfPostConstruct() {
         return new ILzfPostConstruct();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ILzfApplicationRunner iLzfApplicationRunner() {
+        return new ILzfApplicationRunner();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ILzfApplicationListener iLzfApplicationListener() {
+        return new ILzfApplicationListener();
     }
 }
