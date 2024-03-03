@@ -1,10 +1,12 @@
 package com.ilzf.anno.controller;
 
 import com.ilzf.starter.service.ILzfService;
+import com.ilzf.util.ApplicationHolder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +24,8 @@ public class IndexController {
     public String index(String name) {
         iLzfService.say();
         iLzfService.sayProp();
+        ApplicationContext context = ApplicationHolder.getContext();
+        System.out.println(context);
         return name;
     }
 
