@@ -18,6 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.start.web.version>2.7.9</spring.start.web.version>
         <spring.start.version>2.7.18</spring.start.version>
+        <ilzf.server>1.0-SNAPSHOT</ilzf.server>
     </properties>
 
     <parent>
@@ -69,6 +70,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring.start.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>ilzf-service-spring-boot-starter</artifactId>
+                <version>${ilzf.server}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
