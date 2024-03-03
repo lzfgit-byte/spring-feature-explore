@@ -7,6 +7,9 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Aspect
 @Component
 public class IlzfAspect {
@@ -34,6 +37,12 @@ public class IlzfAspect {
     public void before() {
         LogUtil.log("test() --> before");
     }
+
+    @Before("execution (* com.ilzf.aspect.controller.*.*(..)) && args(a1)")
+    public void before2(JoinPoint joinPoint, String a1) {
+        LogUtil.log("参数before --> before  " + a1);
+    }
+
 
     @After("test()")
     public void after() {

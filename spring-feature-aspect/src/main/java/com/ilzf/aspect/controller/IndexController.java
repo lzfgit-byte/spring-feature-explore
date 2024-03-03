@@ -17,6 +17,12 @@ public class IndexController {
         return "1111";
     }
 
+    @ApiOperation(value = "测试切面返回值是String有输入值")
+    @GetMapping("/inputString")
+    public String inputString(String str) {
+        return str;
+    }
+
 
     @ApiOperation(value = "测试切面返回值是int")
     @GetMapping("/index2")
