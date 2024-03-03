@@ -31,6 +31,10 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>spring-feature-util</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

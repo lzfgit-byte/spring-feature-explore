@@ -14,6 +14,7 @@
         <spring.start.web.version>2.7.9</spring.start.web.version>
         <spring.start.version>2.7.18</spring.start.version>
         <ilzf.server>1.0-SNAPSHOT</ilzf.server>
+        <ilzf.util.version>1.0-SNAPSHOT</ilzf.util.version>
         <knife4j.version>4.4.0</knife4j.version>
         <spring.feature.explore.version>1.0-SNAPSHOT</spring.feature.explore.version>
     </properties>
@@ -21,6 +22,7 @@
         <module>spring-feature-anno</module>
         <module>ilzf-service-spring-boot-starter</module>
         <module>spring-feature-aspect</module>
+        <module>spring-feature-util</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -86,6 +88,11 @@
                 <groupId>org.example</groupId>
                 <artifactId>ilzf-service-spring-boot-starter</artifactId>
                 <version>${ilzf.server}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>spring-feature-util</artifactId>
+                <version>${ilzf.util.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
