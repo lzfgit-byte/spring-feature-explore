@@ -5,13 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>spring-feature</artifactId>
+    <artifactId>spring-feature-explore</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-feature-anno</module>
-        <module>ilzf-service-spring-boot-starter</module>
-    </modules>
-    <packaging>pom</packaging>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -20,7 +15,14 @@
         <spring.start.version>2.7.18</spring.start.version>
         <ilzf.server>1.0-SNAPSHOT</ilzf.server>
         <knife4j.version>4.4.0</knife4j.version>
+        <spring.feature.explore.version>1.0-SNAPSHOT</spring.feature.explore.version>
     </properties>
+    <modules>
+        <module>spring-feature-anno</module>
+        <module>ilzf-service-spring-boot-starter</module>
+    </modules>
+    <packaging>pom</packaging>
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>
