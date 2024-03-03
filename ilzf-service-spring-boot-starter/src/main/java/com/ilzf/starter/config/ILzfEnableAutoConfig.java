@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(ILzfService.class)
 //注册该类同级的bean，让spring自动扫描.但是只能是@ConfigurationProperties 注解的bean
+//下边使用到了ILzfServerProperties 所以体检注入到bean
 @EnableConfigurationProperties(ILzfServerProperties.class)
 public class ILzfEnableAutoConfig {
     // 有这个bean的时候注入
