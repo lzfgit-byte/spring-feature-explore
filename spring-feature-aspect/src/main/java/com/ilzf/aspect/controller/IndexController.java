@@ -24,5 +24,12 @@ public class IndexController {
         return 1;
     }
 
+    @ApiOperation(value = "报错测试")
+    @GetMapping("/error")
+    public int index3() {
+        int a = 1 / 0;
+        return 1;
+    }
+
 
 }
