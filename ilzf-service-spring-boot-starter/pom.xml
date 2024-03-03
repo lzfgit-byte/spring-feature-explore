@@ -17,6 +17,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+        <!--    实现starter的必须包    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--        支持@ConfigurationProperties
+        编译时生成spring-configuration-metadata.json，此文件主要给IDE使用，用于提示使用。如在intellij idea中，当配置此jar相关配置属性在application.yml，
+         你可以用ctlr+鼠标左键，IDE会跳转到你配置此属性的类中-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
