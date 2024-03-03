@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spring-feature-anno</module>
+        <module>spring-boot-starter-izfserver</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -16,6 +17,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.start.web.version>2.7.9</spring.start.web.version>
+        <spring.start.version>2.7.18</spring.start.version>
     </properties>
 
     <parent>
@@ -23,6 +25,32 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.13</version>
     </parent>
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>local private nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>mirror2</id>
+            <name>ali2</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>mirror3</id>
+            <name>ali3</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -36,6 +64,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring.start.web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.start.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
