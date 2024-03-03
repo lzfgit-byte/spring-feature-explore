@@ -8,6 +8,6 @@ public class IlzfCommandLineRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         LogUtil.log("CommandLineRunner");
         System.out.println("http://localhost:" + ILzfWebServerInitializedEvent.serverPort);
-        System.out.println("http://localhost:" + ILzfWebServerInitializedEvent.serverPort + "/doc,html");
+        System.out.println("http://localhost:" + ILzfWebServerInitializedEvent.serverPort + "/doc.html");
     }
 }

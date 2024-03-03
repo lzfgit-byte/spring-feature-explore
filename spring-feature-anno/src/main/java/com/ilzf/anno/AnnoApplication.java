@@ -11,8 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class AnnoApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(AnnoApplication.class, args);
-        System.out.println("http://localhost:8080");
-        System.out.println("http://localhost:8080/doc.html");
     }
 
     @Override
