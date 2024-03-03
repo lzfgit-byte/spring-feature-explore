@@ -19,6 +19,7 @@
         <spring.aop.version>3.2.3</spring.aop.version>
         <spring.actuator.version>3.2.3</spring.actuator.version>
         <spring.feature.explore.version>1.0-SNAPSHOT</spring.feature.explore.version>
+        <lombok.version>1.18.24</lombok.version>
     </properties>
     <modules>
         <module>spring-feature-anno</module>
@@ -27,43 +28,17 @@
         <module>spring-feature-util</module>
     </modules>
     <packaging>pom</packaging>
-
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.13</version>
     </parent>
-    <repositories>
-        <repository>
-            <id>public</id>
-            <name>local private nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>mirror2</id>
-            <name>ali2</name>
-            <url>https://maven.aliyun.com/repository/public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>mirror3</id>
-            <name>ali3</name>
-            <url>https://maven.aliyun.com/repository/central</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -108,4 +83,31 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>local private nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>mirror2</id>
+            <name>ali2</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>mirror3</id>
+            <name>ali3</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 </project>
