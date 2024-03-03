@@ -20,6 +20,7 @@
     <modules>
         <module>spring-feature-anno</module>
         <module>ilzf-service-spring-boot-starter</module>
+        <module>spring-feature-aspect</module>
     </modules>
     <packaging>pom</packaging>
 
