@@ -1,7 +1,7 @@
 package com.ilzf.anno.controller;
 
 import com.ilzf.starter.service.ILzfService;
-import com.ilzf.util.ApplicationHolder;
+import com.ilzf.util.ApplicationContextHolder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +24,7 @@ public class IndexController {
     public String index(String name) {
         iLzfService.say();
         iLzfService.sayProp();
-        ApplicationContext context = ApplicationHolder.getContext();
+        ApplicationContext context = ApplicationContextHolder.getContext();
         System.out.println(context);
         return name;
     }
