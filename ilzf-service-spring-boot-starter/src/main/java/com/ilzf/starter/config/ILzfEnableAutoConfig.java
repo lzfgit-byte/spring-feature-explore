@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(ILzfServerProperties.class)//注册该类同级的bean，让spring自动扫描
 public class ILzfEnableAutoConfig {
     // 有这个bean的时候注入
-    @Qualifier("ILzfServerProperties")
     @Autowired
     ILzfServerProperties properties;
 
