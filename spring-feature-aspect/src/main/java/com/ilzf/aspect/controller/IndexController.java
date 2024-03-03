@@ -1,5 +1,6 @@
 package com.ilzf.aspect.controller;
 
+import com.ilzf.aspect.annotation.ILzfLog;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -17,8 +18,10 @@ public class IndexController {
         return "1111";
     }
 
+    @ApiImplicitParam(name = "str", value = "输入", required = true)
     @ApiOperation(value = "测试切面返回值是String有输入值")
     @GetMapping("/inputString")
+    @ILzfLog("aaaa记录的日志")
     public String inputString(String str) {
         return str;
     }

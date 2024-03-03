@@ -1,12 +1,17 @@
 package com.ilzf.aspect.aspect;
 
 
+import com.ilzf.aspect.annotation.ILzfLog;
 import com.ilzf.util.LogUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +45,15 @@ public class IlzfAspect {
 
     @Before("execution (* com.ilzf.aspect.controller.*.*(..)) && args(a1)")
     public void before2(JoinPoint joinPoint, String a1) {
-        LogUtil.log("参数before --> before  " + a1);
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        String name = signature.getName();
+        Method method = signature.getMethod();
+        ILzfLog iLzfLog = method.getAnnotation(ILzfLog.class);
+        if (iLzfLog != null) {
+            LogUtil.log("before记录的日志-->", iLzfLog.value());
+        }
+
+        LogUtil.log("参数before --> before  ", a1, " ", "方法名", name);
     }
 
 
@@ -59,7 +72,7 @@ public class IlzfAspect {
             LogUtil.log("aop catch");
         }
         LogUtil.log("around", "after");
-        return o == null ? "12" : o;
+        return o == null ? "返回时null" : o;
     }
 
     @AfterReturning(pointcut = "test()", returning = "retVal")
