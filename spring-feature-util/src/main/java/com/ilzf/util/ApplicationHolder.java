@@ -8,16 +8,19 @@ import org.springframework.context.ApplicationContextAware;
  * ApplicationContextAware
  * 创建bean的时候如果 类型是ApplicationContextAware
  * 会执行setApplicationContext 方法
+ * <p>
+ * EnvironmentAware  EmbeddedValueResolverAware   ResourceLoaderAware  ApplicationEventPublisherAware
+ * MessageSourceAware   ApplicationStartupAware  ApplicationContextAware
  */
-public class ApplicationHolder implements ApplicationContextAware {
+public class ApplicationContextHolder implements ApplicationContextAware {
     private static ApplicationContext context = null;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        ApplicationHolder.context = applicationContext;
+        ApplicationContextHolder.context = applicationContext;
     }
 
     public static ApplicationContext getContext() {
-        return ApplicationHolder.context;
+        return ApplicationContextHolder.context;
     }
 }
