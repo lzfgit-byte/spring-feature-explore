@@ -55,7 +55,7 @@ public class ILzfEnableAutoConfig {
 
     @Bean
     @ConditionalOnMissingBean
-    public ILzfApplicationListener iLzfApplicationListener() {
-        return new ILzfApplicationListener();
+    public ILzfApplicationStartedEvent iLzfApplicationListener() {
+        return new ILzfApplicationStartedEvent();
     }
 }
