@@ -19,11 +19,12 @@ public class ILzfEnableAutoConfig {
     @Autowired
     ILzfServerProperties properties;
 
+    //必须有一个enable属性且值必须为true,才会注册成功
+    ////    @ConditionalOnProperty(prefix = "ilzf.show", value = "enable", havingValue = "true")
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "ilzf.show", value = "enable", havingValue = "true")
     public ILzfService iLzfService() {
-
+        System.out.println("注册ILzfService");
         return new ILzfService(properties.getName());
     }
 }
