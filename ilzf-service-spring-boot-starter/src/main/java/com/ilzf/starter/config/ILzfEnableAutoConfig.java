@@ -58,4 +58,10 @@ public class ILzfEnableAutoConfig {
     public ILzfApplicationStartedEvent iLzfApplicationListener() {
         return new ILzfApplicationStartedEvent();
     }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ILzfBeanPostProcessor iLzfBeanPostProcessor() {
+        return new ILzfBeanPostProcessor();
+    }
 }
