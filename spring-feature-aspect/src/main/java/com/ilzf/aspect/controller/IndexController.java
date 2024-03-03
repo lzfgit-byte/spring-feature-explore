@@ -11,9 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
 
-    @ApiOperation(value = "测试切面")
+    @ApiOperation(value = "测试切面返回值是String")
     @GetMapping("/")
     public String index() {
         return "1111";
     }
+
+
+    @ApiOperation(value = "测试切面返回值是int")
+    @GetMapping("/index2")
+    public int index2() {
+        return 1;
+    }
+
+
 }

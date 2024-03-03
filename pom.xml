@@ -16,6 +16,7 @@
         <ilzf.server>1.0-SNAPSHOT</ilzf.server>
         <ilzf.util.version>1.0-SNAPSHOT</ilzf.util.version>
         <knife4j.version>4.4.0</knife4j.version>
+        <spring.aop.version>3.2.3</spring.aop.version>
         <spring.feature.explore.version>1.0-SNAPSHOT</spring.feature.explore.version>
     </properties>
     <modules>
@@ -81,6 +82,11 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring.aop.version}</version>
             </dependency>
 
 
