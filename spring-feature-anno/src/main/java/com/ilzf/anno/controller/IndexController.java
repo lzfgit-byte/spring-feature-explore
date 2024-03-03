@@ -1,5 +1,6 @@
 package com.ilzf.anno.controller;
 
+import com.ilzf.anno.beanlifecycle.MultiBean;
 import com.ilzf.starter.service.ILzfService;
 import com.ilzf.util.ApplicationContextHolder;
 import io.swagger.annotations.Api;
@@ -25,8 +26,18 @@ public class IndexController {
         iLzfService.say();
         iLzfService.sayProp();
         ApplicationContext context = ApplicationContextHolder.getContext();
-        System.out.println(context);
+        MultiBean bean = context.getBean(MultiBean.class);
         return name;
+    }
+
+    @ApiOperation(value = "测试多例bean")
+    @GetMapping("/index2")
+    public String index2() {
+        ApplicationContext context = ApplicationContextHolder.getContext();
+        MultiBean bean = context.getBean(MultiBean.class);
+
+        context.getBean("textBeanMethod_multi");
+        return "";
     }
 
 
