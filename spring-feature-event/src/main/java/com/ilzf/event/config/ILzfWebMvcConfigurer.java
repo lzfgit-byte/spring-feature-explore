@@ -3,7 +3,6 @@ package com.ilzf.event.config;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -13,6 +12,29 @@ import java.util.List;
 
 /**
  * 自己定义一些Handler，Interceptor，ViewResolver，MessageConverter
+ * <p>
+ * <p>
+ * 这个类的控制在下边类实现
+ * org.springframework.web.servlet.config.annotation.WebMvcConfigurerComposite
+ * <p>该类可以注册多个webMvcConfigurer
+ * public void addWebMvcConfigurers(List<WebMvcConfigurer> configurers) {
+ * if (!CollectionUtils.isEmpty(configurers)) {
+ * this.delegates.addAll(configurers);
+ * }
+ * }
+ * 其上是控制其交互。其为代理类。WebMvcConfigurerComposite是实际操作类
+ * public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+ * <p>
+ * 注入方式是 spring的set方法注入
+ *
+ * @Configuration( proxyBeanMethods = false
+ * )
+ * public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+ * private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
+ * public DelegatingWebMvcConfiguration() {
+ * }
+ * @Autowired( required = false)
+ * public void setConfigurers(List<WebMvcConfigurer> configurers) {
  */
 @Component
 public class ILzfWebMvcConfigurer implements WebMvcConfigurer {
