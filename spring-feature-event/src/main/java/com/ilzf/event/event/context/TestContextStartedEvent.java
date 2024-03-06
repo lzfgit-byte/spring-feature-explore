@@ -5,6 +5,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.stereotype.Component;
 
+/**
+ * 启动时无调用
+ */
 @Component
 public class TestContextStartedEvent implements ApplicationListener<ContextStartedEvent> {
     @Override
