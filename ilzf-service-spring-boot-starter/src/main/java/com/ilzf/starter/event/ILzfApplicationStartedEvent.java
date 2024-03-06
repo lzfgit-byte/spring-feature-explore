@@ -8,6 +8,6 @@ public class ILzfApplicationStartedEvent implements ApplicationListener<Applicat
 
     @Override
     public void onApplicationEvent(ApplicationStartedEvent event) {
-        LogUtil.log("ApplicationStartedEvent");
+        LogUtil.log("starter ApplicationStartedEvent");
     }
 }

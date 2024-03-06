@@ -10,7 +10,7 @@ public class ILzfWebServerInitializedEvent implements ApplicationListener<WebSer
 
     @Override
     public void onApplicationEvent(WebServerInitializedEvent event) {
-        LogUtil.log("WebServerInitializedEvent");
+        LogUtil.log("starter WebServerInitializedEvent");
         ILzfWebServerInitializedEvent.serverPort = event.getWebServer().getPort() + "";
     }
 }

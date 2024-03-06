@@ -10,6 +10,10 @@ public class ILzfPostConstruct {
     // Lifecycle method annotation requires a no-arg method
 
     /**
+     * 反射工具类
+     * ReflectionUtils.doWithLocalMethods(targetClass, (method) -> {
+     * <p>
+     * <p>
      * CommonAnnotationBeanPostProcessor 继承了 InitDestroyAnnotationBeanPostProcessor
      * org.springframework.context.annotation.CommonAnnotationBeanPostProcessor
      * 在创建时会初始化下文的 Annotation
@@ -46,7 +50,7 @@ public class ILzfPostConstruct {
      */
     @PostConstruct
     public void say() {
-        LogUtil.log("PostConstruct");
+        LogUtil.log("starter   PostConstruct");
     }
 
     /**
