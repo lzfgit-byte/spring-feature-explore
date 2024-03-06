@@ -1,9 +1,12 @@
 package com.ilzf.event.config;
 
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
@@ -36,6 +39,9 @@ public class ILzfWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 内容协商
+     * 同一资源可以有多种表述，这就是我们今天文章的主题：内容协商
+     * 比如
+     * 同一个 接口（同一个URL）在接口报错情况下，若你用rest访问，它返回给你的是一个json串；但若你用浏览器访问，它返回给你的是一段html
      *
      * @param configurer
      */
@@ -50,9 +56,99 @@ public class ILzfWebMvcConfigurer implements WebMvcConfigurer {
 //                .mediaType("json", MediaType.APPLICATION_JSON)// 请求以.json结尾的会被当成MediaType.APPLICATION_JSON
 //                .mediaType("xml", MediaType.APPLICATION_ATOM_XML);// 请求以.xml结尾的会被当成MediaType.APPLICATION_ATOM_XML
 
-
         WebMvcConfigurer.super.configureContentNegotiation(configurer);
     }
+
+    /**
+     * 信息转化器  与内容写上搭配使用？
+     * 这里的消息是后端返回给前端的数据类型
+     *
+     * @param converters
+     */
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        WebMvcConfigurer.super.configureMessageConverters(converters);
+    }
+
+    /**
+     * 信息转化器扩展
+     * 与接口返回值有关
+     * 用于在配置转换器后扩展或修改转换器列表的钩子。
+     * 这可能很有用，例如允许注册默认转换器，然后通过此方法插入自定义转换器。
+     * <p>
+     * 在消息转换器处理结束后，通过该方法做最后调整
+     *
+     * @param converters
+     */
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        WebMvcConfigurer.super.extendMessageConverters(converters);
+    }
+
+    /**
+     * // 静态资源默认处理器
+     *
+     * @param configurer
+     */
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        WebMvcConfigurer.super.configureDefaultServletHandling(configurer);
+    }
+
+    /**
+     * 异常处理器
+     * 与这样功能一致
+     *
+     * @param resolvers
+     * @Bean public ApplicationHandlerExceptionResolver handlerExceptionResolver(){
+     * return new ApplicationHandlerExceptionResolver();
+     * }
+     * 全局异常处理。下边可以配置多个
+     * <p>
+     * 当controller中产生异常的时候会调用该接口来处理，注意，当返回值指定视图时会自动跳转至指定的视图中去，
+     * 如果返回null，会继续调用下一个异常处理器去执行。
+     */
+    @Override
+    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        WebMvcConfigurer.super.configureHandlerExceptionResolvers(resolvers);
+    }
+
+    /**
+     * 配置视图解析器   需要后端返回页面的时候
+     * thymeleaf便是一个视图处理器
+     * tomcat自带jsp处理器
+     *
+     * @param registry
+     */
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        WebMvcConfigurer.super.configureViewResolvers(registry);
+    }
+
+
+    /**
+     * 配置路径匹配规则
+     * 请求路径匹配的规则处理器
+     * 1、添加前缀
+     * 2、设置url预处理器(处理错误的url传入)
+     *
+     * @param configurer
+     */
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        // 是否使用尾斜杠匹配, 默认为TRUE。TRUE, 表示"/hello"和"/hello/"都能匹配。
+//        configurer.setUseTrailingSlashMatch(false);
+//
+//        // 为所有的接口添加统一前缀。如果的URL为: "/hello", 则转换为: "/api/hello"
+//        configurer.addPathPrefix("api", c -> c.isAnnotationPresent(RestController.class));
+//
+//        // UrlPathHelper是一个处理URL地址的帮助类, 自带了一些优化URL的方法；
+//        // 如：getSanitizedPath，就是将"//"自动转换为"/", 所以当输入为"//"也是没有问题的，
+//        UrlPathHelper urlPathHelper = new UrlPathHelper();
+//        configurer.setUrlPathHelper(urlPathHelper);
+        WebMvcConfigurer.super.configurePathMatch(configurer);
+    }
+
 
     /**
      * 配置参数解释 HandlerMethodArgumentResolver
