@@ -1,3 +1,9 @@
+spring初始化的事件时继承自
+
+```
+SpringApplicationEvent [extends ApplicationEvent]
+```
+
 ```html
 2024-03-06 14:57:44.619 INFO 6016 --- [           main] com.ilzf.event.EventApplication          : Started
 EventApplication in 0.988 seconds (JVM running for 1.603)
