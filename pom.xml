@@ -15,6 +15,7 @@
         <spring.start.version>2.7.18</spring.start.version>
         <ilzf.server>1.0-SNAPSHOT</ilzf.server>
         <ilzf.util.version>1.0-SNAPSHOT</ilzf.util.version>
+        <spring.feature.event.version>1.0-SNAPSHOT</spring.feature.event.version>
         <knife4j.version>4.4.0</knife4j.version>
         <spring.aop.version>3.2.3</spring.aop.version>
         <spring.actuator.version>3.2.3</spring.actuator.version>
@@ -26,6 +27,7 @@
         <module>ilzf-service-spring-boot-starter</module>
         <module>spring-feature-aspect</module>
         <module>spring-feature-util</module>
+        <module>spring-feature-event</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
