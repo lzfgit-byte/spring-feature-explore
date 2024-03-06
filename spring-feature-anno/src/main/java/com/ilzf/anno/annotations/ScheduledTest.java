@@ -4,7 +4,6 @@ import com.ilzf.util.LogUtil;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 
 /**
  * 启动类添加 @EnableScheduling注解
