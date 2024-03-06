@@ -3,6 +3,7 @@ package com.ilzf.event.event.web;
 import com.ilzf.util.LogUtil;
 import org.springframework.boot.web.servlet.context.ServletWebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,8 +17,8 @@ import org.springframework.stereotype.Component;
  * servlet 启动后直接掉
  */
 @Component
-public class TestServletWebServerInitializedEvent implements ApplicationListener<ServletWebServerInitializedEvent> {
-    @Override
+public class TestServletWebServerInitializedEvent {
+    @EventListener
     public void onApplicationEvent(ServletWebServerInitializedEvent event) {
         LogUtil.log("TestServletWebServerInitializedEvent");
     }
