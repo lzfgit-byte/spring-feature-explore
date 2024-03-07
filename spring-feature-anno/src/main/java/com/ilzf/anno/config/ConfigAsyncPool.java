@@ -2,6 +2,7 @@ package com.ilzf.anno.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
@@ -39,7 +40,12 @@ public class ConfigAsyncPool {
         return executor;
     }
 
+    @Bean(name = "asyncExecutor2")
+    public MyAsyncExecutor asyncExecutor() {
+        return new MyAsyncExecutor();
+    }
 }
+
 
 class ConstantFiledUtil {
     public static final String AUTHORIZATION_TOKEN = "authorizationToken";

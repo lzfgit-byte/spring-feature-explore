@@ -57,5 +57,17 @@ public class IndexController {
         return "";
     }
 
+    @ApiOperation(value = "重定向的Async")
+    @GetMapping("/index4")
+    public String index4() throws ExecutionException, InterruptedException {
+        ApplicationContext context = ApplicationContextHolder.getContext();
+        TestAsync bean = context.getBean(TestAsync.class);
+        LogUtil.log("执行开始");
+        CompletableFuture<String> say = bean.say2();
+//        LogUtil.log(say.get());
+        LogUtil.log("执行结束");
+        return "";
+    }
+
 
 }

@@ -2,6 +2,7 @@ package com.ilzf.anno.annotations;
 
 
 import com.ilzf.util.LogUtil;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -16,15 +17,21 @@ import java.util.concurrent.CompletableFuture;
 @Component
 public class TestAsync {
 
-    @Async()
+
+    @Async
     public CompletableFuture<String> say() {
         LogUtil.log("TestAsync...");
         return CompletableFuture.completedFuture("TestAsync");
     }
 
-    @Async
+    /**
+     * Async("asyncExecutor2")
+     * 重定向到一个集成自java.util.concurrent.Executor的bean执行。
+     * 但是会丢失异步性，会变为同步执行
+     */
+    @Async("asyncExecutor2")
     public CompletableFuture<String> say2() {
         LogUtil.log("TestAsync...2");
-        return CompletableFuture.completedFuture("TestAsync");
+        return CompletableFuture.completedFuture("TestAsync2");
     }
 }
