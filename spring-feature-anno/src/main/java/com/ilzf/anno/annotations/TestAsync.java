@@ -27,7 +27,7 @@ public class TestAsync {
     /**
      * Async("asyncExecutor2")
      * 重定向到一个集成自java.util.concurrent.Executor的bean执行。
-     * 但是会丢失异步性，会变为同步执行
+     * 但是会丢失异步性，会变为同步执行。异步将交由执行器自主控制
      */
     @Async("asyncExecutor2")
     public CompletableFuture<String> say2() {
