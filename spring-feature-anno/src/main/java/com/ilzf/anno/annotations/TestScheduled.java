@@ -44,7 +44,7 @@ import org.springframework.stereotype.Component;
  * }
  */
 @Component
-public class ScheduledTest {
+public class TestScheduled {
 
     @Scheduled(cron = "0/5 * * * * ?")
     public void say() {
