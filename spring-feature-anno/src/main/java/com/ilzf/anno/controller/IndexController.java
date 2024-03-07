@@ -13,6 +13,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 @Api(tags = "测试starter")
 @RestController("/")
 public class IndexController {
@@ -44,12 +47,12 @@ public class IndexController {
 
     @ApiOperation(value = "测试Async")
     @GetMapping("/index3")
-    public String index3() {
+    public String index3() throws ExecutionException, InterruptedException {
         ApplicationContext context = ApplicationContextHolder.getContext();
         TestAsync bean = context.getBean(TestAsync.class);
         LogUtil.log("执行开始");
-        String say = bean.say();
-        LogUtil.log(say);//会是null
+        CompletableFuture<String> say = bean.say();
+//        LogUtil.log(say.get());
         LogUtil.log("执行结束");
         return "";
     }

@@ -10,8 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableWebMvc
-//@EnableScheduling
-@EnableAsync
 public class AnnoApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(AnnoApplication.class, args);
