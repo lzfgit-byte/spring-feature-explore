@@ -29,6 +29,7 @@
         <module>spring-feature-util</module>
         <module>spring-feature-event</module>
         <module>spring-feature-extend</module>
+        <module>spring-feature-poi</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
