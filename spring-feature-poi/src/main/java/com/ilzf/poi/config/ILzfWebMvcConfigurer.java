@@ -23,10 +23,4 @@ public class ILzfWebMvcConfigurer implements WebMvcConfigurer {
         registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
-
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new StringHttpMessageConverter(StandardCharsets.UTF_8));
-        WebMvcConfigurer.super.configureMessageConverters(converters);
-    }
 }

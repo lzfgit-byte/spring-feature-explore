@@ -16,6 +16,7 @@
         <ilzf.server>1.0-SNAPSHOT</ilzf.server>
         <ilzf.util.version>1.0-SNAPSHOT</ilzf.util.version>
         <spring.feature.event.version>1.0-SNAPSHOT</spring.feature.event.version>
+        <spring.feature.web.version>1.0-SNAPSHOT</spring.feature.web.version>
         <knife4j.version>4.4.0</knife4j.version>
         <spring.aop.version>3.2.3</spring.aop.version>
         <spring.actuator.version>3.2.3</spring.actuator.version>
@@ -32,6 +33,7 @@
         <module>spring-feature-event</module>
         <module>spring-feature-extend</module>
         <module>spring-feature-poi</module>
+        <module>izf-web-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
@@ -97,6 +99,12 @@
                 <groupId>org.example</groupId>
                 <artifactId>spring-feature-util</artifactId>
                 <version>${ilzf.util.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>izf-web-spring-boot-starter</artifactId>
+                <version>${spring.feature.web.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
