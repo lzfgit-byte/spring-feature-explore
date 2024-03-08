@@ -2,6 +2,8 @@ package com.ilzf.extend.service;
 
 import com.ilzf.extend.entity.ExtendEntity;
 import com.ilzf.util.ApplicationContextHolder;
+import com.ilzf.util.LogUtil;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,19 @@ public class ExtendService {
     /**
      * 模拟数据库查询一个
      */
-    public Object getOne(ExtendEntity extend) {
+    public <T extends ExtendEntity> Object getOne(T extend) {
         ApplicationContext context = ApplicationContextHolder.getContext();
-        ExtendServiceAdapter bean = context.getBean(ExtendServiceAdapter.class);
+        ExtendServiceAdapter bean = null;
+        try {
+            bean = context.getBean(ExtendServiceAdapter.class);
+        } catch (NoSuchBeanDefinitionException e) {
+            LogUtil.log("未有实现类");
+        }
+        if (bean != null) {
+            LogUtil.log("存储被代理");
+            return bean.adapterGet(extend);
+        }
+        LogUtil.log("平台数据存储");
         return null;
     }
 
