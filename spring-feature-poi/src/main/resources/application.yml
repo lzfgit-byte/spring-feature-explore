@@ -5,10 +5,11 @@ server:
   tomcat:
     max-http-form-post-size: 200MB
 spring:
-  http:
-    encoding:
-
   servlet:
     multipart:
       max-file-size: 200MB
       max-request-size: 200MB
+ilzf:
+  swagger:
+    group-name: poi测试
+    package-path: com.ilzf.poi.controller
