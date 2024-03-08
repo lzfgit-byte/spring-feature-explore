@@ -1,0 +1,11 @@
+{
+  "name": "spring-feature-explore",
+  "type": "module",
+  "private": true,
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

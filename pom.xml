@@ -28,6 +28,7 @@
         <module>spring-feature-aspect</module>
         <module>spring-feature-util</module>
         <module>spring-feature-event</module>
+        <module>spring-feature-extend</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
