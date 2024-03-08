@@ -21,6 +21,8 @@
         <spring.actuator.version>3.2.3</spring.actuator.version>
         <spring.feature.explore.version>1.0-SNAPSHOT</spring.feature.explore.version>
         <lombok.version>1.18.24</lombok.version>
+        <poi.ooxml.version>3.12</poi.ooxml.version>
+        <poi.scratchpad.version>3.12</poi.scratchpad.version>
     </properties>
     <modules>
         <module>spring-feature-anno</module>
@@ -68,10 +70,21 @@
                 <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${spring.aop.version}</version>
             </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>org.springframework.boot</groupId>-->
+            <!--                <artifactId>spring-boot-starter-actuator</artifactId>-->
+            <!--                <version>${spring.actuator.version}</version>-->
+            <!--            </dependency>-->
+
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-                <version>${spring.actuator.version}</version>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.ooxml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-scratchpad</artifactId>
+                <version>${poi.scratchpad.version}</version>
             </dependency>
 
 

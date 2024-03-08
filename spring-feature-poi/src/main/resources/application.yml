@@ -5,6 +5,9 @@ server:
   tomcat:
     max-http-form-post-size: 200MB
 spring:
+  http:
+    encoding:
+
   servlet:
     multipart:
       max-file-size: 200MB
