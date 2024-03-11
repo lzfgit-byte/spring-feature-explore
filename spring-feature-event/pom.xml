@@ -9,7 +9,7 @@
     <artifactId>spring-feature-event</artifactId>
     <packaging>war</packaging>
     <name>spring-feature-event Maven Webapp</name>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -25,8 +25,8 @@
             <artifactId>spring-feature-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+            <groupId>org.example</groupId>
+            <artifactId>izf-web-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
     <build>

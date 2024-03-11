@@ -12,3 +12,6 @@ spring:
 ilzf:
   show:
     name: 12313
+  swagger:
+    group-name: 注解测试
+    package-path: com.ilzf.anno.controller
