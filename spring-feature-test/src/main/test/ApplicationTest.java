@@ -9,7 +9,10 @@ import org.springframework.util.Assert;
 
 import java.util.Random;
 
-
+/**
+ * Assertions的方法抛出异常意味着测试不通过，
+ * Assumptions的方法抛出异常意味着测试被跳过(为什么称为"跳过"？因为mvn test的执行结果被标记为Skipped)；
+ */
 @SpringBootTest(classes = JunitApplication.class)
 public class ApplicationTest {
 
@@ -43,11 +46,19 @@ public class ApplicationTest {
         Assertions.assertTrue(junitService.say());
     }
 
+
     @Test
+    @DisplayName("测试2")
     public void test2() {
         Random random = new Random();
         int a = random.nextInt(10);
         LogUtil.log(a);
         Assertions.assertTrue(a > 4, "小于四");
+    }
+
+    @Test
+    public void test3() {
+        Assumptions.assumeTrue("abc".contains("Z"));
+        Assertions.fail("test should have been aborted");
     }
 }
