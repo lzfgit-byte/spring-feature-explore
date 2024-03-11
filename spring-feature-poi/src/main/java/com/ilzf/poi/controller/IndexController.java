@@ -1,8 +1,10 @@
 package com.ilzf.poi.controller;
 
+import com.ilzf.poi.util.PdfConverUtil;
 import com.ilzf.util.LogUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.apache.poi.xslf.usermodel.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -90,13 +92,23 @@ public class IndexController {
     }
 
 
-    @ApiOperation("pdf转图片")
+    @ApiOperation("pptx转图片")
     @GetMapping("/")
     public String index() {
         LogUtil.log("pdf转图片");
 //        ZipSecureFile.setMinInflateRatio(-1.0d);
 //        this.doPPT2007toImage(new File("C:\\Users\\18074\\Downloads\\picture.pptx"), "C:\\Users\\18074\\Downloads\\");
 
-        return "pdf转图片";
+        return "pptx转图片";
+    }
+
+    @ApiOperation("pptx转pdf")
+    @GetMapping("/index2")
+    public String index2() {
+        LogUtil.log("pptx转pdf");
+        ZipSecureFile.setMinInflateRatio(-1.0d);
+        PdfConverUtil.pptxToPdf("C:\\Users\\18074\\Downloads\\picture.pptx", "C:\\Users\\18074\\Downloads\\");
+
+        return "pptx转pdf";
     }
 }

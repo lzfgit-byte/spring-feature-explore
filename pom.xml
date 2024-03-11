@@ -22,9 +22,12 @@
         <spring.actuator.version>3.2.3</spring.actuator.version>
         <spring.feature.explore.version>1.0-SNAPSHOT</spring.feature.explore.version>
         <lombok.version>1.18.24</lombok.version>
-        <poi.ooxml.version>5.2.1</poi.ooxml.version>
-        <apache.poi.version>5.2.1</apache.poi.version>
-        <poi.scratchpad.version>5.2.1</poi.scratchpad.version>
+        <poi.ooxml.version>4.1.2</poi.ooxml.version>
+        <apache.poi.version>4.1.2</apache.poi.version>
+        <poi.scratchpad.version>4.1.2</poi.scratchpad.version>
+        <itextpdf.version>5.4.3</itextpdf.version>
+        <itextpdf.asian.version>5.2.0</itextpdf.asian.version>
+        <hutool.util.version>5.6.0</hutool.util.version>
     </properties>
     <modules>
         <module>spring-feature-anno</module>
@@ -73,12 +76,17 @@
                 <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${spring.aop.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.util.version}</version>
+            </dependency>
             <!--            <dependency>-->
             <!--                <groupId>org.springframework.boot</groupId>-->
             <!--                <artifactId>spring-boot-starter-actuator</artifactId>-->
             <!--                <version>${spring.actuator.version}</version>-->
             <!--            </dependency>-->
-
+            <!-- poi -->
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml</artifactId>
@@ -89,8 +97,30 @@
                 <artifactId>poi</artifactId>
                 <version>${apache.poi.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-scratchpad</artifactId>
+                <version>${poi.scratchpad.version}</version>
+            </dependency>
+            <!--       poi结束     -->
+
+            <!--     -->
+            <!-- itextpdf 开始 -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itextpdf</artifactId>
+                <version>${itextpdf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itext-asian</artifactId>
+                <version>${itextpdf.asian.version}</version>
+            </dependency>
+            <!--  itextpdf 结束  -->
 
 
+            <!-- 自己的模块 -->
             <dependency>
                 <groupId>org.example</groupId>
                 <artifactId>ilzf-service-spring-boot-starter</artifactId>
