@@ -9,3 +9,7 @@ spring:
     multipart:
       max-file-size: 200MB
       max-request-size: 200MB
+ilzf:
+  swagger:
+    group-name: 测试业务动态扩展
+    package-path: com.ilzf.extend.controller

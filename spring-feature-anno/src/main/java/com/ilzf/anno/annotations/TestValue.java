@@ -40,7 +40,7 @@ public class TestValue {
     /**
      * 注入其它bean属性,包含方法
      */
-    @Value("#{knife4jConfiguration.other}")
+//    @Value("#{knife4jConfiguration.other}")
     public String str5;
 
     /**

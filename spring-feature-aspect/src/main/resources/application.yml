@@ -9,3 +9,7 @@ spring:
     multipart:
       max-file-size: 200MB
       max-request-size: 200MB
+ilzf:
+  swagger:
+    group-name: 测试aop
+    package-path: com.ilzf.aspect.controller

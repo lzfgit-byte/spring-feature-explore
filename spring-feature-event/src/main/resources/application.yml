@@ -9,3 +9,7 @@ spring:
     multipart:
       max-file-size: 200MB
       max-request-size: 200MB
+ilzf:
+  swagger:
+    group-name: 测试事件
+    package-path: com.ilzf.event.controller
