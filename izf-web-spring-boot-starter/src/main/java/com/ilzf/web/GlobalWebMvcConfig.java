@@ -1,6 +1,7 @@
 package com.ilzf.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,8 +27,11 @@ public class GlobalWebMvcConfig implements WebMvcConfigurer {
     @Autowired
     SwaggerConfigProperties properties;
 
+    /**
+     * 当bean中存在SwaggerConfigProperties是注入该bean
+     */
     @Bean
-//    @ConditionalOnBean(SwaggerConfigProperties.class)
+    @ConditionalOnClass(SwaggerConfigProperties.class)
     public Docket dockerBean() {
         if (properties == null || properties.getGroupName() == null || properties.getPackagePath() == null) {
             throw new RuntimeException("请配置swagger地址");
@@ -50,15 +54,23 @@ public class GlobalWebMvcConfig implements WebMvcConfigurer {
                 .build();
     }
 
+    /**
+     * 配置swagger资源路径
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+    /**
+     * 消息转换，解决中文乱码
+     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new StringHttpMessageConverter(StandardCharsets.UTF_8));
         WebMvcConfigurer.super.configureMessageConverters(converters);
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
+
 }
