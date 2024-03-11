@@ -38,6 +38,7 @@
         <module>spring-feature-extend</module>
         <module>spring-feature-poi</module>
         <module>izf-web-spring-boot-starter</module>
+        <module>spring-feature-test</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
