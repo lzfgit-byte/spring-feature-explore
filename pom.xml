@@ -22,8 +22,9 @@
         <spring.actuator.version>3.2.3</spring.actuator.version>
         <spring.feature.explore.version>1.0-SNAPSHOT</spring.feature.explore.version>
         <lombok.version>1.18.24</lombok.version>
-        <poi.ooxml.version>3.12</poi.ooxml.version>
-        <poi.scratchpad.version>3.12</poi.scratchpad.version>
+        <poi.ooxml.version>5.2.1</poi.ooxml.version>
+        <apache.poi.version>5.2.1</apache.poi.version>
+        <poi.scratchpad.version>5.2.1</poi.scratchpad.version>
     </properties>
     <modules>
         <module>spring-feature-anno</module>
@@ -85,8 +86,8 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
-                <artifactId>poi-scratchpad</artifactId>
-                <version>${poi.scratchpad.version}</version>
+                <artifactId>poi</artifactId>
+                <version>${apache.poi.version}</version>
             </dependency>
 
 
@@ -100,7 +101,7 @@
                 <artifactId>spring-feature-util</artifactId>
                 <version>${ilzf.util.version}</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.example</groupId>
                 <artifactId>izf-web-spring-boot-starter</artifactId>

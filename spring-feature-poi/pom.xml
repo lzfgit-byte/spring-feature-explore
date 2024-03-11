@@ -31,11 +31,11 @@
         <!-- poi包 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
+            <artifactId>poi</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
-            <artifactId>poi-scratchpad</artifactId>
+            <artifactId>poi-ooxml</artifactId>
         </dependency>
     </dependencies>
 
