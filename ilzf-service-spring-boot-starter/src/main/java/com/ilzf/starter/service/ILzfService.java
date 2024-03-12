@@ -15,4 +15,8 @@ public class ILzfService {
     public void sayProp() {
         System.out.println("starter service say" + this.name);
     }
+
+    public String getName() {
+        return this.name;
+    }
 }

@@ -13,7 +13,7 @@ spring:
       max-request-size: 200MB
 ilzf:
   show:
-    name: 12313
+    name: 默认
   swagger:
     group-name: 注解测试
     package-path: com.ilzf.anno.controller

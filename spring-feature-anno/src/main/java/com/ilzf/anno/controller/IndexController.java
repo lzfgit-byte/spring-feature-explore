@@ -29,7 +29,7 @@ public class IndexController {
     ILzfService iLzfService;
 
 
-    @ApiImplicitParam(name = "name", value = "姓名", required = true)
+    //    @ApiImplicitParam(name = "name", value = "姓名", required = true)
     @ApiOperation(value = "获取配置")
     @GetMapping("/")
     public String index(String name) {
@@ -37,7 +37,7 @@ public class IndexController {
         iLzfService.sayProp();
         ApplicationContext context = ApplicationContextHolder.getContext();
         MultiBean bean = context.getBean(MultiBean.class);
-        return name;
+        return iLzfService.getName();
     }
 
     @ApiOperation(value = "测试多例bean")
