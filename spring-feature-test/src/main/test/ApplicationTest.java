@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.condition.OS.*;
 /**
  * Assertions的方法抛出异常意味着测试不通过，
  * Assumptions的方法抛出异常意味着测试被跳过(为什么称为"跳过"？因为mvn test的执行结果被标记为Skipped)；
+ * https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5
  */
 @SpringBootTest(classes = JunitApplication.class)
 @DisplayName("A special test case")
