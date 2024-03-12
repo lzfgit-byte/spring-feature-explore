@@ -1,0 +1,4 @@
+## java -jar xxx.jar --spring.profiles.active=test
+ilzf:
+  show:
+    name: dev
