@@ -33,6 +33,56 @@
         </dependency>
     </dependencies>
 
+    <!--    <profiles>-->
+    <!--        <profile>-->
+    <!--            &lt;!&ndash;不同环境的唯一id&ndash;&gt;-->
+    <!--            <id>dev</id>-->
+    <!--            <activation>-->
+    <!--                &lt;!&ndash;默认激活开发环境&ndash;&gt;-->
+    <!--                <activeByDefault>true</activeByDefault>-->
+    <!--            </activation>-->
+    <!--            <properties>-->
+    <!--                &lt;!&ndash;profile.active对应application.yml中的@profile.active@&ndash;&gt;-->
+    <!--                <profile.active>dev</profile.active>-->
+    <!--            </properties>-->
+    <!--        </profile>-->
+
+    <!--        &lt;!&ndash;测试环境&ndash;&gt;-->
+    <!--        <profile>-->
+    <!--            <id>test</id>-->
+    <!--            <properties>-->
+    <!--                <profile.active>test</profile.active>-->
+    <!--            </properties>-->
+    <!--        </profile>-->
+
+    <!--        &lt;!&ndash;生产环境&ndash;&gt;-->
+    <!--        <profile>-->
+    <!--            <id>prod</id>-->
+    <!--            <properties>-->
+    <!--                <profile.active>prod</profile.active>-->
+    <!--            </properties>-->
+    <!--        </profile>-->
+    <!--    </profiles>-->
+
+
+    <!--    <activation>-->
+    <!--        &lt;!&ndash;配置默认激活&ndash;&gt;-->
+    <!--        <activeByDefault>true</activeByDefault>-->
+
+    <!--        &lt;!&ndash;通过jdk版本&ndash;&gt;-->
+    <!--        &lt;!&ndash;当jdk环境版本为1.8时，此profile被激活&ndash;&gt;-->
+    <!--        <jdk>1.8</jdk>-->
+    <!--        &lt;!&ndash;当jdk环境版本1.8或以上时，此profile被激活&ndash;&gt;-->
+    <!--        <jdk>[1.8,)</jdk>-->
+
+    <!--        &lt;!&ndash;根据当前操作系统&ndash;&gt;-->
+    <!--        <os>-->
+    <!--            <name>Windows XP</name>-->
+    <!--            <family>Windows</family>-->
+    <!--            <arch>x86</arch>-->
+    <!--            <version>5.1.2600</version>-->
+    <!--        </os>-->
+    <!--    </activation>-->
     <build>
         <plugins>
             <plugin>

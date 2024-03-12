@@ -1,4 +1,5 @@
 ## java -jar xxx.jar --spring.profiles.active=test
+## mvn clean package package -P test
 ilzf:
   show:
     name: dev
