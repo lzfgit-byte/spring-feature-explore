@@ -7,7 +7,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @EnableWebMvc
 public class PoiApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(PoiApplication.class);
+        // 启动Spring应用
+        SpringApplication.run(PoiApplication.class, args);
     }
 }
