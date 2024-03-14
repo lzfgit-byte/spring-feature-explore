@@ -21,12 +21,7 @@ public class IndexController {
     public String index() {
         return iLzfService.getName();
     }
-
-    @GetMapping("/indexServer2")
-    @ApiOperation(value = "测试服务2")
-    public String indexServer2() {
-        return iLzfService.getName();
-    }
+    
 
     @GetMapping("/testFeign")
     @ApiOperation(value = "测试服务1 feign")
