@@ -6,6 +6,7 @@
         <artifactId>spring-feature-spring-cloud</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <version>1.0-SNAPSHOT</version>
     <artifactId>cloud-fegin</artifactId>
     <packaging>jar</packaging>
     <dependencies>
