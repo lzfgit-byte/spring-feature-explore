@@ -11,5 +11,5 @@ spring:
       max-request-size: 200MB
 ilzf:
   swagger:
-    group-name: server1
+    group-name: server2
     package-path: com.ilzf.server2.controller
