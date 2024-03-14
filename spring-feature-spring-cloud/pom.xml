@@ -11,6 +11,7 @@
         <module>cloud-feign</module>
         <module>cloud-server1</module>
         <module>cloud-server2</module>
+        <module>cloud-gateway</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
     @Autowired
     ILzfService iLzfService;
-    @Value("${ilzf.show.name}")
-    private String text;
+    @NacosValue("${ilzf.show.name}")
+    public String text;
 
     @ApiOperation(value = "测试云配置")
     @GetMapping("/")
