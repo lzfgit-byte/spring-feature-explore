@@ -1,6 +1,7 @@
 package com.ilzf.server1.controller;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.ilzf.feign.client.serverTwo.api.ServerTwoFeign;
 import com.ilzf.starter.service.ILzfService;
 import com.ilzf.util.LogUtil;
 import io.swagger.annotations.Api;
@@ -19,6 +20,9 @@ public class IndexController {
     @Value("${ilzf.show.name}")
     public String text;
 
+    @Autowired
+    ServerTwoFeign serverTwoFeign;
+
     @ApiOperation(value = "测试云配置")
     @GetMapping("/")
     public String index() {
@@ -26,10 +30,9 @@ public class IndexController {
         return iLzfService.getName();
     }
 
-    @ApiOperation(value = "测试云配置")
+    @ApiOperation(value = "测试feign")
     @GetMapping("/indexServerOne")
     public String indexServerOne() {
-        LogUtil.log(this.text);
-        return iLzfService.getName();
+        return serverTwoFeign.index();
     }
 }
