@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api("server1")
 @RestController
-@RefreshScope
 public class IndexController {
     @Autowired
     ILzfService iLzfService;
