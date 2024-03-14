@@ -16,9 +16,6 @@
     <properties>
         <cloud.dependencies.version>2021.0.5</cloud.dependencies.version>
         <cloud.alibaba.dependencies.version>2021.0.5.0</cloud.alibaba.dependencies.version>
-        <nacos.discovery.version>2021.0.5.0</nacos.discovery.version>
-        <cloud.starter.bootstrap.version>3.1.5</cloud.starter.bootstrap.version>
-        <alibaba.nacos.config.version>2021.0.5.0</alibaba.nacos.config.version>
     </properties>
     <dependencies>
         <dependency>
@@ -38,6 +35,24 @@
             <artifactId>izf-web-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${cloud.dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${cloud.alibaba.dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <finalName>spring-feature-spring-cloud</finalName>
     </build>
