@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8090
   servlet:
     context-path: /
   tomcat:
@@ -7,6 +7,20 @@ server:
 spring:
   application:
     name: server1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url:127.0.0.1}:${nacos.port:8848}
+        username: ${nacos.name:nacos}
+        password: ${nacos.password:nacos}
+        namespace: ${nacos.namespace:explore}
+      config:
+        server-addr: ${nacos.url:127.0.0.1}:${nacos.port:8848}
+        username: ${nacos.name:nacos}
+        password: ${nacos.password:nacos}
+        file-extension: yml
+        namespace: ${nacos.namespace:explore}
+        shared-configs: explorer-server1.yml
   servlet:
     multipart:
       max-file-size: 200MB
