@@ -1,6 +1,6 @@
 spring:
   application:
-    name: server1
+    name: serverOne
   cloud:
     nacos:
       discovery:
