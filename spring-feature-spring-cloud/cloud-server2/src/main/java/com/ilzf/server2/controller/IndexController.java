@@ -5,8 +5,8 @@ import com.ilzf.starter.service.ILzfService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.openfeign.SpringQueryMap;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Api("服务2")
@@ -21,11 +21,17 @@ public class IndexController {
     public String index() {
         return iLzfService.getName();
     }
-    
+
 
     @GetMapping("/testFeign")
     @ApiOperation(value = "测试服务1 feign")
     public String index2() {
+        return serverOneFeign.index();
+    }
+
+    @GetMapping("/testDynamicFeign")
+    @ApiOperation(value = "测试动态构建feign")
+    public String testDynamicFeign() {
         return serverOneFeign.index();
     }
 }
