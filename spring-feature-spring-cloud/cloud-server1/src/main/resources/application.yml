@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    max-http-form-post-size: 200MB
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+ilzf:
+  swagger:
+    group-name: 注解测试
+    package-path: com.ilzf.anno.controller
