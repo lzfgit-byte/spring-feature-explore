@@ -25,4 +25,11 @@ public class IndexController {
         LogUtil.log(this.text);
         return iLzfService.getName();
     }
+
+    @ApiOperation(value = "测试云配置")
+    @GetMapping("/indexServerOne")
+    public String indexServerOne() {
+        LogUtil.log(this.text);
+        return iLzfService.getName();
+    }
 }
