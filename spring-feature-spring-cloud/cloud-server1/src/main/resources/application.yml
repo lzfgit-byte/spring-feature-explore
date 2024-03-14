@@ -5,11 +5,12 @@ server:
   tomcat:
     max-http-form-post-size: 200MB
 spring:
+  application:
+    name: server1
   servlet:
     multipart:
       max-file-size: 200MB
       max-request-size: 200MB
-
 ilzf:
   swagger:
     group-name: server1
