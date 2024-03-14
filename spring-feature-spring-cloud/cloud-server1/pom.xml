@@ -23,6 +23,10 @@
             <type>pom</type>
             <scope>import</scope>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.alibaba.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+        <!--        </dependency>-->
     </dependencies>
     <build>
         <finalName>cloud-server1</finalName>

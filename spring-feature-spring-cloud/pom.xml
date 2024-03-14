@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
     <properties>
         <cloud.version>2021.0.5</cloud.version>
-        <cloud.alibaba.version>2021.0.1.0</cloud.alibaba.version>
+        <cloud.alibaba.version>2.2.9.RELEASE</cloud.alibaba.version>
     </properties>
     <dependencies>
         <dependency>
