@@ -14,4 +14,4 @@ spring:
         password: ${nacos.password:nacos}
         file-extension: yml
         namespace: ${nacos.namespace:explore}
-        shared-configs: explore-serverOne.yaml
+        shared-configs: serverOne.yml
