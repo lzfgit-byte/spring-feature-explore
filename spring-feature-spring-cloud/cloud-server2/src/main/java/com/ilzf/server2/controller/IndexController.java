@@ -1,5 +1,6 @@
 package com.ilzf.server2.controller;
 
+import com.ilzf.dynamic.feign.DynamicClient;
 import com.ilzf.feign.client.serverOne.api.ServerOneFeign;
 import com.ilzf.starter.service.ILzfService;
 import io.swagger.annotations.Api;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @Api("服务2")
 public class IndexController {
@@ -15,6 +18,8 @@ public class IndexController {
     ILzfService iLzfService;
     @Autowired
     ServerOneFeign serverOneFeign;
+    @Autowired
+    DynamicClient dynamicClient;
 
     @GetMapping("/")
     @ApiOperation(value = "测试服务2")
@@ -32,6 +37,7 @@ public class IndexController {
     @GetMapping("/testDynamicFeign")
     @ApiOperation(value = "测试动态构建feign")
     public String testDynamicFeign() {
-        return serverOneFeign.index();
+        Object obj = dynamicClient.executeGetApi("serverOne", "/", new HashMap<>());
+        return (String) obj;
     }
 }

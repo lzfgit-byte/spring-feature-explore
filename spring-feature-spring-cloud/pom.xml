@@ -20,6 +20,7 @@
         <cloud.dependencies.version>2021.0.5</cloud.dependencies.version>
         <cloud.alibaba.dependencies.version>2021.0.5.0</cloud.alibaba.dependencies.version>
         <feign.version>1.0-SNAPSHOT</feign.version>
+        <feign.dynamic.version>1.0-SNAPSHOT</feign.dynamic.version>
     </properties>
     <dependencies>
         <dependency>
@@ -65,6 +66,11 @@
                 <groupId>org.example</groupId>
                 <artifactId>cloud-fegin</artifactId>
                 <version>${feign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>cloud-dynamic</artifactId>
+                <version>${feign.dynamic.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

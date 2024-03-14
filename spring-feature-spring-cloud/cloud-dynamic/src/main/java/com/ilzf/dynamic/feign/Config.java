@@ -13,8 +13,8 @@ public class Config {
     }
 
     @Bean
-    public DynamicFeignClientFactory dynamicFeignClientFactory(ApplicationContext appContext) {
+    public DynamicFeignClientFactory<?> dynamicFeignClientFactory(ApplicationContext appContext) {
         LogUtil.log("DynamicFeignClientFactory");
-        return new DynamicFeignClientFactory(appContext);
+        return new DynamicFeignClientFactory<>(appContext);
     }
 }
