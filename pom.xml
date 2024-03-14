@@ -39,6 +39,7 @@
         <module>spring-feature-poi</module>
         <module>izf-web-spring-boot-starter</module>
         <module>spring-feature-test</module>
+        <module>spring-feature-spring-cloud</module>
     </modules>
     <packaging>pom</packaging>
     <parent>

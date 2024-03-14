@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.example</groupId>
+        <artifactId>spring-feature-explore</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>spring-feature-spring-cloud</artifactId>
+    <modules>
+        <module>cloud-feign</module>
+        <module>cloud-server1</module>
+        <module>cloud-server2</module>
+    </modules>
+    <packaging>pom</packaging>
+    <dependencies>
+
+    </dependencies>
+    <build>
+        <finalName>spring-feature-spring-cloud</finalName>
+    </build>
+</project>
