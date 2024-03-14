@@ -14,8 +14,10 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <cloud.version>2021.0.5</cloud.version>
+        <cloud.version>2021.0.8</cloud.version>
         <cloud.alibaba.version>2.2.9.RELEASE</cloud.alibaba.version>
+        <nacos.discovery.version>2021.0.1.0</nacos.discovery.version>
+        <cloud.starter.version>4.0.0</cloud.starter.version>
     </properties>
     <dependencies>
         <dependency>
