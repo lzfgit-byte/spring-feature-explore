@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: server2
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url:127.0.0.1}:${nacos.port:8848}
+        username: ${nacos.name:nacos}
+        password: ${nacos.password:nacos}
+        namespace: ${nacos.namespace:explore}
+      config:
+        server-addr: ${nacos.url:127.0.0.1}:${nacos.port:8848}
+        username: ${nacos.name:nacos}
+        password: ${nacos.password:nacos}
+        file-extension: yml
+        namespace: ${nacos.namespace:explore}
+        shared-configs: serverTwo.yml
