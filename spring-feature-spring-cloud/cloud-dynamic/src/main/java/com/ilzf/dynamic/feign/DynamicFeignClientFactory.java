@@ -2,12 +2,10 @@ package com.ilzf.dynamic.feign;
 
 import org.springframework.cloud.openfeign.FeignClientBuilder;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
-@Component
 public class DynamicFeignClientFactory<T> {
 
-    private FeignClientBuilder feignClientBuilder;
+    private final FeignClientBuilder feignClientBuilder;
 
     public DynamicFeignClientFactory(ApplicationContext appContext) {
         this.feignClientBuilder = new FeignClientBuilder(appContext);
