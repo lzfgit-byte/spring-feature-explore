@@ -1,0 +1,21 @@
+server:
+  port: 8093
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      globalcors:
+        add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true
+            allowedOriginPatterns: "*"
+            allowed-headers: "*"
+            allowed-methods: "*"
+            maxAge: 360000
+            exposedHeaders: "Content-Disposition,Content-Type,Cache-Control"
