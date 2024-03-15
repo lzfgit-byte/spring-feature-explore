@@ -39,4 +39,11 @@ public class IndexController {
         Object obj = dynamicClient.executeGetApi("serverOne", "/", new HashMap<>());
         return (String) obj;
     }
+
+    @GetMapping("/testDynamicFeignObj")
+    @ApiOperation(value = "测试动态构建feign-obj")
+    public String testDynamicFeignObj() {
+        Object obj = dynamicClient.executeGetApi("serverOne", "/2Obj", new HashMap<>());
+        return (String) obj;
+    }
 }

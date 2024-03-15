@@ -12,6 +12,11 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @Api("server1")
 @RestController
 public class IndexController {
@@ -28,6 +33,14 @@ public class IndexController {
     public String index() {
         LogUtil.log(this.text);
         return iLzfService.getName();
+    }
+
+    @ApiOperation(value = "返回对象Obj")
+    @GetMapping("/2Obj")
+    public Object index2Obj() {
+        LogUtil.log("ss");
+        List<Integer> collect = Stream.of(1, 2, 3, 4).collect(Collectors.toList());
+        return collect;
     }
 
     @ApiOperation(value = "测试feign")
