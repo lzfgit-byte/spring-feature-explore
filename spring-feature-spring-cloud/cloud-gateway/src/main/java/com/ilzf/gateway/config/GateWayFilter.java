@@ -1,7 +1,6 @@
 package com.ilzf.gateway.config;
 
 
-import com.alibaba.nacos.client.utils.LogUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
