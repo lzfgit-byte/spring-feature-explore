@@ -10,7 +10,7 @@ spring:
           enabled: true
       #          lower-case-service-id: true
       globalcors:
-        add-to-simple-url-handler-mapping: true
+        #       add-to-simple-url-handler-mapping: true
         cors-configurations:
           '[/**]':
             allow-credentials: true
@@ -19,3 +19,10 @@ spring:
             allowed-methods: "*"
             maxAge: 360000
             exposedHeaders: "Content-Disposition,Content-Type,Cache-Control"
+      routes:
+        - id: serverOne # 唯一标识，通常使用服务id
+          uri: lb://serverOne #目标URL，lb代表从注册中心获取服务，lb是Load Balance的缩写 lb://serverOne
+          predicates:
+            - Path=/**
+          filters:
+            - AddRequestParameter=red, blue

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -42,7 +43,8 @@ public class IndexController {
 
     @ApiOperation(value = "测试feign")
     @GetMapping("/indexServerOne")
-    public String indexServerOne() {
+    public String indexServerOne(HttpServletRequest request) {
+        System.out.println("");
         return serverTwoFeign.index();
     }
 }
