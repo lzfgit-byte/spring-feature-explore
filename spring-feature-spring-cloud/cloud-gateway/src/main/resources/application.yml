@@ -7,7 +7,7 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: true # false就是路径是啥，就去所有服务里搜寻；如果是true,根据服务名去搜寻，请求就不带服务名
       #          lower-case-service-id: true
       globalcors:
         #       add-to-simple-url-handler-mapping: true
