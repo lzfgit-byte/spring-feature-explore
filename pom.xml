@@ -44,6 +44,7 @@
         <module>izf-web-spring-boot-starter</module>
         <module>spring-feature-test</module>
         <module>spring-feature-spring-cloud</module>
+        <module>spring-feature-security</module>
     </modules>
     <packaging>pom</packaging>
 

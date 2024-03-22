@@ -1,0 +1,15 @@
+server:
+  port: 8087
+  servlet:
+    context-path: /
+  tomcat:
+    max-http-form-post-size: 200MB
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+ilzf:
+  swagger:
+    group-name: 权限测试
+    package-path: com.ilzf.security.controller
