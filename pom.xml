@@ -32,6 +32,8 @@
         <itextpdf.version>5.4.3</itextpdf.version>
         <itextpdf.asian.version>5.2.0</itextpdf.asian.version>
         <hutool.util.version>5.6.0</hutool.util.version>
+        <jedis.version>3.7.0</jedis.version>
+        <redis.start.version>3.2.2</redis.start.version>
     </properties>
     <modules>
         <module>spring-feature-anno</module>
@@ -138,6 +140,17 @@
                 <groupId>org.example</groupId>
                 <artifactId>izf-web-spring-boot-starter</artifactId>
                 <version>${spring.feature.web.version}</version>
+            </dependency>
+            <!--      redis      -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${redis.start.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
