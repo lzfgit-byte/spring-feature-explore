@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
-@RestController("/")
+@RestController("")
 @Api("测试权限")
 public class IndexController {
 
     @Autowired
     StringRedisTemplate redisTemplate;
 
+
+    @ApiOperation("校验权限")
+    @GetMapping("/api/getVal")
+    public String getVal() {
+        return "getVal";
+    }
 
     @ApiOperation("向redis存值")
     @GetMapping("/")
