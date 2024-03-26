@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
@@ -23,12 +24,6 @@ public class IndexController {
     @ApiOperation("校验权限")
     @GetMapping("/api/getVal")
     public String getVal() {
-        return "getVal";
-    }
-
-    @ApiOperation("登录接口")
-    @GetMapping("/api/login")
-    public String login(@ApiParam(value = "用户名", required = true) String name, @ApiParam(value = "密码", required = true) String password) {
         return "getVal";
     }
 

@@ -43,10 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
 //                以上设置请求的认证
                 .and()
-                .formLogin().loginPage("/api/login")
+                .formLogin().loginProcessingUrl("/api/login")
                 .successHandler(new SuccessHandler()).failureHandler(new FailHandler())
                 .and()
-                .logout().logoutUrl("/api/logout")
+                .logout().logoutUrl("/api/logout").permitAll()
                 .and()
                 .exceptionHandling()
                 // 认证失败返回401状态码，前端页面可以根据401状态码跳转到登录页面。
@@ -73,6 +73,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                          */
                         String requestURI = request.getRequestURI();
                         LogUtil.log("requestURI", requestURI);
+                        if (antPathMatcher.match("/api/logout", requestURI)) {
+                            return false;
+                        }
                         if (antPathMatcher.match("/api/**", requestURI)) {
                             return true;
                         }
