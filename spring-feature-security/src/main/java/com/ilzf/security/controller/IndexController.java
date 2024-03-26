@@ -32,6 +32,12 @@ public class IndexController {
         return "getVal";
     }
 
+    @ApiOperation("登出接口")
+    @GetMapping("/api/logout")
+    public String logout() {
+        return "getVal";
+    }
+
     @ApiOperation("向redis存值")
     @GetMapping("/")
     public String index() {

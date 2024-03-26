@@ -46,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/api/login")
                 .successHandler(new SuccessHandler()).failureHandler(new FailHandler())
                 .and()
+                .logout().logoutUrl("/api/logout")
+                .and()
                 .exceptionHandling()
                 // 认证失败返回401状态码，前端页面可以根据401状态码跳转到登录页面。
                 .authenticationEntryPoint((request, response, authException) ->
