@@ -153,11 +153,13 @@
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${redis.start.version}</version>
             </dependency>
+            <!--   security    -->
             <dependency>
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
                 <version>${spring.security.oauth2.version}</version>
             </dependency>
+            <!--   security  end  -->
         </dependencies>
     </dependencyManagement>
 
