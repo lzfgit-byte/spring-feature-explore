@@ -34,7 +34,7 @@
         <hutool.util.version>5.6.0</hutool.util.version>
         <jedis.version>3.7.0</jedis.version>
         <redis.start.version>3.2.2</redis.start.version>
-        <spring.security.oauth2.version>2.5.2.RELEASE</spring.security.oauth2.version>
+        <spring.security.oauth2.version>2.3.4.RELEASE</spring.security.oauth2.version>
     </properties>
     <modules>
         <module>spring-feature-anno</module>

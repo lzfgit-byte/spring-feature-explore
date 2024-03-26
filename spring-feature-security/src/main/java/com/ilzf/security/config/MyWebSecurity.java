@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * TODO 校验EnableWebSecurity的作用
+ */
 //@Configuration
 //@EnableWebSecurity
 public class MyWebSecurity {
