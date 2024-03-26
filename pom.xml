@@ -35,6 +35,7 @@
         <jedis.version>3.7.0</jedis.version>
         <redis.start.version>3.2.2</redis.start.version>
         <spring.security.oauth2.version>2.3.4.RELEASE</spring.security.oauth2.version>
+        <spring.boot.starter.security.version>3.2.4</spring.boot.starter.security.version>
     </properties>
     <modules>
         <module>spring-feature-anno</module>
@@ -154,6 +155,11 @@
                 <version>${redis.start.version}</version>
             </dependency>
             <!--   security    -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring.boot.starter.security.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
