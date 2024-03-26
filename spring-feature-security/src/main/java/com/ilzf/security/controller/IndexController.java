@@ -2,7 +2,9 @@ package com.ilzf.security.controller;
 
 import com.ilzf.util.LogUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,12 @@ public class IndexController {
     @ApiOperation("校验权限")
     @GetMapping("/api/getVal")
     public String getVal() {
+        return "getVal";
+    }
+
+    @ApiOperation("登录接口")
+    @GetMapping("/api/login")
+    public String login(@ApiParam(value = "用户名", required = true) String name, @ApiParam(value = "密码", required = true) String password) {
         return "getVal";
     }
 

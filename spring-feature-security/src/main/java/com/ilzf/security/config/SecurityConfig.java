@@ -33,19 +33,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // 如果没有下面的语句, 那么任何请求都可以免认证
         http.authorizeRequests()
+                //不同写法
+//                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
                 .anyRequest()
                 .authenticated()
+//                以上设置请求的认证
+                .and()
+                .formLogin().loginPage("/api/login")
                 .and()
                 .exceptionHandling()
-                // 认证失败返回401状态码，前端页面可以根据401状态码跳转到登录页面
+                // 认证失败返回401状态码，前端页面可以根据401状态码跳转到登录页面。
                 .authenticationEntryPoint((request, response, authException) ->
                         response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()))
                 .and().cors()
                 // csrf是否决定禁用，请自行考量
                 .and().csrf().disable()
                 // 会匹配所有api开头的请求，多个请求匹配规则，以后出现的为主。在此处就是已requestMatcher的匹配为主
-                .antMatcher("/api/**")
+                //判断给那些请求进行权限校验
+//                .antMatcher("/api/**")
                 .requestMatcher(new RequestMatcher() {
                     //使用ant语法去进行匹配url
                     private final AntPathMatcher antPathMatcher = new AntPathMatcher();
