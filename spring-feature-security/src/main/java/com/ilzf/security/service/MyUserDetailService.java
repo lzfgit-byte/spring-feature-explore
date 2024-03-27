@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
- * 登录校验
+ * 登录校验,自定义身份校验
  */
 @Service
 public class MyUserDetailService implements UserDetailsService {
