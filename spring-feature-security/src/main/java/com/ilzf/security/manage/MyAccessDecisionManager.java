@@ -13,7 +13,6 @@ import java.util.Collection;
 /**
  *
  */
-@Component
 @Slf4j
 public class MyAccessDecisionManager implements AccessDecisionManager {
     @Override
