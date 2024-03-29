@@ -33,6 +33,8 @@ import org.springframework.security.core.AuthenticationException;
  * <p>
  * 认证流程
  * ProviderManager-->DaoAuthenticationProvider--->userDetail
+ * ProviderManager是一个AuthenticationManager。控制授权。
+ * ProviderManager委托给DaoAuthenticationProvider进行授权校验，该provider会调用userDetail进行校验
  */
 public class MyAuthenticationManager implements AuthenticationManager {
     @Override
