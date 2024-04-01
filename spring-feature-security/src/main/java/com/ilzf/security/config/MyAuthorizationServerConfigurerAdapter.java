@@ -3,7 +3,7 @@ package com.ilzf.security.config;
 import com.ilzf.security.manage.MyAuthenticationManager;
 import com.ilzf.security.service.MyClientDetailsServer;
 import com.ilzf.security.service.MyUserDetailService;
-import com.ilzf.security.store.MyStore;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -12,14 +12,10 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
-import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 @Configuration
 @EnableAuthorizationServer
 public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerConfigurerAdapter {
-    @Resource
-    private DataSource dataSource;
 
     /**
      * 用来配置客户端详情服务（ClientDetailsService），
@@ -32,10 +28,12 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
      * @param clients
      * @throws Exception
      */
+    @Autowired
+    MyClientDetailsServer myClientDetailsServer;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         super.configure(clients);
-        MyClientDetailsServer myClientDetailsServer = new MyClientDetailsServer(dataSource);
         clients.withClientDetails(myClientDetailsServer);
         clients.inMemory()
                 .withClient("client")   // client_id
