@@ -19,8 +19,11 @@ import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Configuration
-@EnableWebSecurity
+/**
+ * oauth2 使用下，不使用此处配置spring security
+ */
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    @Bean
