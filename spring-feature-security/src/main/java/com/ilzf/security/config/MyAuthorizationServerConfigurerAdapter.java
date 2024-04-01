@@ -45,10 +45,39 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
                 .autoApprove(true); //登录后绕过批准询问(/oauth/confirm_access)
     }
 
-    //用来配置令牌端点(Token Endpoint)的安全约束.
+    /**
+     * 用来配置令牌端点(Token Endpoint)的安全约束.
+     * AuthorizationServerSecurityConfigurer继承SecurityConfigurerAdapter
+     * 是一个 Spring Security安全配置提供给AuthorizationServer
+     * 去配置AuthorizationServer的端点（/oauth/****）的安全访问规则、过滤器Filter。
+     * <p>
+     * ClientDetail加密方式
+     * allowFormAuthenticationForClients 允许表单认证。针对/oauth/token端点。
+     * 添加开发配置tokenEndpointAuthenticationFilters
+     * tokenKeyAccess、checkTokenAccess访问权限。
+     * <p>
+     * *  配置：安全检查流程,用来配置令牌端点（Token Endpoint）的安全与权限访问
+     * *  默认过滤器：BasicAuthenticationFilter
+     * *  1、oauth_client_details表中clientSecret字段加密【ClientDetails属性secret】
+     * *  2、CheckEndpoint类的接口 oauth/check_token 无需经过过滤器过滤，默认值：denyAll()
+     * * 对以下的几个端点进行权限配置：
+     * * /oauth/authorize：授权端点
+     * * /oauth/token：令牌端点
+     * * /oauth/confirm_access：用户确认授权提交端点
+     * * /oauth/error：授权服务错误信息端点
+     * * /oauth/check_token：用于资源服务访问的令牌解析端点
+     * * /oauth/token_key：提供公有密匙的端点，如果使用JWT令牌的话
+     * <p>
+     * <p>
+     * 配置通用接口的权限
+     */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         super.configure(security);
+//        security.allowFormAuthenticationForClients()//允许客户表单认证
+//                .passwordEncoder(new BCryptPasswordEncoder())//设置oauth_client_details中的密码编码器
+//                .tokenKeyAccess("permitAll()") // 开启/oauth/token_key验证端口无权限访问
+//                .checkTokenAccess("isAuthenticated()")// 开启/oauth/check_token验证端口认证权限访问
     }
 
     /**

@@ -22,6 +22,7 @@ public class MyUserDetailService implements UserDetailsService {
      * 根据用户名字，返回一个校验通过的用户
      * 此处输入的密码是正确的密码加密后的，会跟前台输入的密码进行比较
      * 组装用户信息
+     * 根据用户名字从数据获取用户密码
      *
      * @param username 用户名
      * @return 返回用户
