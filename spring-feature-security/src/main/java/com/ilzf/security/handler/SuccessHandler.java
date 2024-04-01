@@ -1,8 +1,9 @@
 package com.ilzf.security.handler;
 
 import com.ilzf.security.entity.MyUser;
+import com.ilzf.security.service.MyClientDetailsServer;
+import com.ilzf.util.ApplicationContextHolder;
 import com.ilzf.util.LogUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.*;
@@ -19,10 +20,7 @@ import java.util.Map;
 
 @Component
 public class SuccessHandler implements AuthenticationSuccessHandler {
-    @Autowired
-    private ClientDetailsService clientDetailsService;
-    @Autowired
-    private AuthorizationServerTokenServices authorizationServerTokenServices;
+
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -34,11 +32,15 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         String clientId = request.getParameter("client_id");
         String clientSecret = request.getParameter("client_secret");
 
-        ClientDetails clientDetails = clientDetailsService.loadClientByClientId(clientId);
+        //登录成功，生成单点登录token
+        MyClientDetailsServer bean = ApplicationContextHolder.getContext().getBean(MyClientDetailsServer.class);
+        AuthorizationServerTokenServices bean1 = ApplicationContextHolder.getContext().getBean(AuthorizationServerTokenServices.class);
+
+        ClientDetails clientDetails = bean.loadClientByClientId(clientId);
         TokenRequest tokenRequest = new TokenRequest(new HashMap<>(), clientId, clientDetails.getScope(), "custom");
         OAuth2Request oAuth2Request = tokenRequest.createOAuth2Request(clientDetails);
         OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
-        OAuth2AccessToken token = authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
+        OAuth2AccessToken token = bean1.createAccessToken(oAuth2Authentication);
 
         Map<String, Object> res = new HashMap<>();
         res.put("msg", "登录成功");
