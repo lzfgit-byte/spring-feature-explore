@@ -40,8 +40,6 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
                 .authenticated()
 //                以上设置请求的认证
                 .and()
-                .oauth2Client()
-                .and()
                 .exceptionHandling()
                 // 认证失败返回401状态码，前端页面可以根据401状态码跳转到登录页面。
                 .authenticationEntryPoint((request, response, authException) ->
