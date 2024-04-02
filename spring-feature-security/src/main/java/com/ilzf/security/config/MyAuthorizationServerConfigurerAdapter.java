@@ -34,7 +34,8 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     @Autowired
     PasswordEncoder passwordEncoder;
     /**
-     * 自定义一下两位，暂时不可行。自定义tokenserver会导致注入两个相同的bean、导致授权失败
+     * 自定义 myTokenServices 是可以传入 AuthenticationManager
+     * 不需要额外注入 AuthenticationManager
      */
 //    @Autowired
 //    MyTokenServices myTokenServices;

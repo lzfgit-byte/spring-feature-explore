@@ -93,6 +93,9 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     @Autowired
     MyTokenStore myStore;
 
+    /**
+     * 这里配置oauth2的一些基本信息
+     */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         super.configure(resources);
