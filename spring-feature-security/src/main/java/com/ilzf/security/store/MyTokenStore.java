@@ -1,7 +1,9 @@
 package com.ilzf.security.store;
 
+import com.ilzf.security.constant.SecurityInfo;
 import com.ilzf.util.LogUtil;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -10,6 +12,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * TokenStore的初始化在发生在AuthorizationServerEndpointsConfigurer中，默认的TokenStore是InMemoryTokenStore
@@ -39,10 +42,24 @@ public class MyTokenStore extends InMemoryTokenStore {
     }
 
     //从存储中读取访问令牌
+
+    /**
+     * 此处处理自动续期
+     */
     @Override
     public OAuth2AccessToken readAccessToken(String tokenValue) {
         LogUtil.log("readAccessToken");
-        return super.readAccessToken(tokenValue);
+        OAuth2AccessToken oAuth2AccessToken = super.readAccessToken(tokenValue);
+
+        if (oAuth2AccessToken == null || oAuth2AccessToken.isExpired()) {
+            return null;
+        } else {
+            DefaultOAuth2AccessToken defaultOAuth2AccessToken = new DefaultOAuth2AccessToken(oAuth2AccessToken);
+            defaultOAuth2AccessToken.setExpiration(new Date(System.currentTimeMillis() + SecurityInfo.EXPIRE_DATE * 1000L));
+            OAuth2Authentication oAuth2Authentication = readAuthentication(tokenValue);
+            storeAccessToken(defaultOAuth2AccessToken, oAuth2Authentication);
+        }
+        return oAuth2AccessToken;
     }
 
     //从存储中删除访问令牌

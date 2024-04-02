@@ -1,5 +1,6 @@
 package com.ilzf.security.entity;
 
+import com.ilzf.security.constant.SecurityInfo;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 
 public class MyClientDetailEntity extends BaseClientDetails {
@@ -25,7 +26,7 @@ public class MyClientDetailEntity extends BaseClientDetails {
      * @return
      */
     public Integer getAccessTokenValiditySeconds() {
-        return 30;
+        return SecurityInfo.EXPIRE_DATE;
     }
 
 }
