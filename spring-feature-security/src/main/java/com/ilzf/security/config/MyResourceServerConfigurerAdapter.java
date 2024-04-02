@@ -30,6 +30,8 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     LoginSuccessHandler loginSuccessHandler;
     @Autowired
     LoginFailHandler loginFailHandler;
+    @Autowired
+    MyResourceAuthenticationEntryPoint myResourceAuthenticationEntryPoint;
 
 
     @Override
@@ -107,7 +109,7 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
          */
         resources.tokenExtractor(new BearerTokenExtractor());
         //当oauth2 token过期等错误是，走该处端点
-        resources.authenticationEntryPoint(new MyResourceAuthenticationEntryPoint());
+        resources.authenticationEntryPoint(myResourceAuthenticationEntryPoint);
 
     }
 }

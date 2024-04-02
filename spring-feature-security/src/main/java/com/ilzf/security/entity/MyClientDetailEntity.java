@@ -25,7 +25,7 @@ public class MyClientDetailEntity extends BaseClientDetails {
      * @return
      */
     public Integer getAccessTokenValiditySeconds() {
-        return 10;
+        return 30;
     }
 
 }
