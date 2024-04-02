@@ -1,7 +1,6 @@
 package com.ilzf.security.config;
 
 import com.ilzf.security.manage.MyAuthenticationManager;
-import com.ilzf.security.service.MyAuthorizationServerTokenServices;
 import com.ilzf.security.service.MyClientDetailsServer;
 import com.ilzf.security.service.MyTokenServices;
 import com.ilzf.security.service.MyUserDetailService;
@@ -26,6 +25,8 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     MyStore myStore;
     @Autowired
     MyTokenServices myTokenServices;
+    @Autowired
+    MyAuthenticationManager myAuthenticationManager;
 
     /**
      * 用来配置客户端详情服务（ClientDetailsService），
@@ -113,5 +114,7 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
         endpoints.tokenStore(myStore);
         //控制token的声明周期
         endpoints.tokenServices(myTokenServices);
+        //配置AuthenticationManager
+        endpoints.authenticationManager(myAuthenticationManager);
     }
 }

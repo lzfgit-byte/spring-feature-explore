@@ -4,6 +4,7 @@ import com.ilzf.util.LogUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
 
 /**
  * 在获取authentication时 中间商处理
@@ -36,6 +37,7 @@ import org.springframework.security.core.AuthenticationException;
  * ProviderManager是一个AuthenticationManager。控制授权。
  * ProviderManager委托给DaoAuthenticationProvider进行授权校验，该provider会调用userDetail进行校验
  */
+@Component
 public class MyAuthenticationManager implements AuthenticationManager {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

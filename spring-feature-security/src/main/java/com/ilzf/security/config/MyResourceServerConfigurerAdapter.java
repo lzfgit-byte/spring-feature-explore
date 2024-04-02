@@ -2,7 +2,10 @@ package com.ilzf.security.config;
 
 import com.ilzf.security.handler.FailHandler;
 import com.ilzf.security.handler.SuccessHandler;
+import com.ilzf.security.service.MyTokenServices;
+import com.ilzf.security.store.MyStore;
 import com.ilzf.util.LogUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -25,6 +28,12 @@ import javax.servlet.http.HttpServletRequest;
 @Configuration
 @EnableResourceServer
 public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
+
+    @Autowired
+    MyTokenServices myTokenServices;
+    @Autowired
+    MyStore myStore;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -89,5 +98,7 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         super.configure(resources);
+        resources.tokenStore(myStore);
+        resources.tokenServices(myTokenServices);
     }
 }
