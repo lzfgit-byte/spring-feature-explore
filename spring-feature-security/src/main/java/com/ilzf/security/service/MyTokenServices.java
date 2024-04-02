@@ -33,14 +33,14 @@ import org.springframework.stereotype.Component;
  * private AuthenticationManager authenticationManager;
  * DefaultTokenServices持有authenticationManager，accessTokenEnhancer，clientDetailsService
  */
-@Component
+//@Component
 public class MyTokenServices extends DefaultTokenServices {
 
-    @Autowired
+    //    @Autowired
     MyAuthenticationManager myAuthenticationManager;
-    @Autowired
+    //    @Autowired
     MyStore tokenStore;
-    @Autowired
+    //    @Autowired
     PasswordEncoder passwordEncoder;
 
     MyTokenServices() {

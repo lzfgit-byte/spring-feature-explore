@@ -66,7 +66,7 @@ public class MyAuthenticationManager implements AuthenticationManager {
 
     public MyAuthenticationManager() {
         PreAuthenticatedAuthenticationProvider provider = new PreAuthenticatedAuthenticationProvider();
-        provider.setPreAuthenticatedUserDetailsService(new UserDetailsByNameServiceWrapper<>(myUserDetailService));
+        provider.setPreAuthenticatedUserDetailsService(new UserDetailsByNameServiceWrapper<>(new MyUserDetailService()));
         this.providerManager = new ProviderManager(Collections.singletonList(provider));
     }
 

@@ -91,8 +91,12 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
                 .httpBasic();
     }
 
+    @Autowired
+    MyStore myStore;
+
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         super.configure(resources);
+        resources.tokenStore(myStore);
     }
 }
