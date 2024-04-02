@@ -1,20 +1,15 @@
 package com.ilzf.security.config;
 
-import com.ilzf.security.handler.FailHandler;
-import com.ilzf.security.handler.SuccessHandler;
+import com.ilzf.security.handler.LoginFailHandler;
+import com.ilzf.security.handler.LoginSuccessHandler;
 import com.ilzf.util.LogUtil;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.AntPathMatcher;
 
@@ -86,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //登录
                 .formLogin().loginProcessingUrl("/api/login")
                 .usernameParameter("userName").passwordParameter("password").permitAll()
-                .successHandler(new SuccessHandler()).failureHandler(new FailHandler())
+                .successHandler(new LoginSuccessHandler()).failureHandler(new LoginFailHandler())
                 .and()
                 //登出
                 .logout().logoutUrl("/api/logout").permitAll()
