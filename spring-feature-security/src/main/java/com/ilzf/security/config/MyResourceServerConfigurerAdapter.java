@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.authentication.BearerTokenExtractor;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.AntPathMatcher;
 
@@ -98,5 +99,12 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
         super.configure(resources);
         resources.tokenStore(myStore);
         resources.resourceId(SecurityInfo.RESOURCE_ID);
+        //token 提取，从请求中提取token，两个位置
+        /**
+         *request.getParameter("access_token");
+         * request.getHeaders("Authorization");
+         * Authorization: Bearer {tokenValue}
+         */
+        resources.tokenExtractor(new BearerTokenExtractor());
     }
 }
