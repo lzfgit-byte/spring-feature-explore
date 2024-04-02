@@ -1,6 +1,7 @@
 package com.ilzf.security.config;
 
 import com.ilzf.security.enhancer.MyTokenEnhancer;
+import com.ilzf.security.entryPoint.MyAuthenticationEntryPoint;
 import com.ilzf.security.service.MyClientDetailsServer;
 import com.ilzf.security.service.MyUserDetailService;
 import com.ilzf.security.store.MyTokenStore;
@@ -10,12 +11,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.TokenGranter;
+import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.oauth2.provider.refresh.RefreshTokenGranter;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
@@ -93,6 +96,8 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         super.configure(security);
+        //TODO 配置自己的，暂时不走
+        security.authenticationEntryPoint(new MyAuthenticationEntryPoint());
 //        security.allowFormAuthenticationForClients()//允许客户表单认证
 //                .passwordEncoder(passwordEncoder)//设置oauth_client_details中的密码编码器
 //                .tokenKeyAccess("permitAll()") // 开启/oauth/token_key验证端口无权限访问
@@ -123,9 +128,8 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
         endpoints.userDetailsService(myUserDetailService);
         //注入自己的tokenstore
         endpoints.tokenStore(myStore);
-        //设置oauth出异常时的处理 只是处理OAuth2Exception
+        //设置oauth出异常时的处理 默认是defaultWebResponseExceptionTranslator
         endpoints.exceptionTranslator(new MyWebResponseExceptionTranslator());
-
 
         //控制token的声明周期
 //        endpoints.tokenServices(myTokenServices);

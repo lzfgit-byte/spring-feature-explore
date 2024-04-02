@@ -20,7 +20,7 @@ public class MyWebResponseExceptionTranslator implements WebResponseExceptionTra
         if (status == HttpStatus.UNAUTHORIZED.value() || e instanceof InsufficientScopeException) {
             headers.set("WWW-Authenticate", String.format("%s %s", "Bearer", exception.getSummary()));
         }
-        LogUtil.log("translate");
+        LogUtil.log("MyWebResponseExceptionTranslator");
         return new ResponseEntity<>(exception, headers, HttpStatus.valueOf(status));
     }
 }
