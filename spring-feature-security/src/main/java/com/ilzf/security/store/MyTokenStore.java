@@ -52,6 +52,7 @@ public class MyTokenStore extends InMemoryTokenStore {
         OAuth2AccessToken oAuth2AccessToken = super.readAccessToken(tokenValue);
 
         if (oAuth2AccessToken == null || oAuth2AccessToken.isExpired()) {
+            removeAccessToken(tokenValue);
             return null;
         } else {
             DefaultOAuth2AccessToken defaultOAuth2AccessToken = new DefaultOAuth2AccessToken(oAuth2AccessToken);
