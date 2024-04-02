@@ -128,6 +128,7 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
 //        endpoints.tokenEnhancer(chain);
     }
 
+
     @Bean
     @Qualifier("myTokenEnhancer")
     public TokenEnhancer myTokenEnhancer() {

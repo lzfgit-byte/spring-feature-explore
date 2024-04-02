@@ -34,12 +34,6 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     LoginFailHandler loginFailHandler;
 
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-
     @Override
     public void configure(HttpSecurity http) throws Exception {
 //        super.configure(http);
