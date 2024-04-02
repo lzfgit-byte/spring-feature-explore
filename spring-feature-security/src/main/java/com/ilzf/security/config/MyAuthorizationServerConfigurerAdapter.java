@@ -14,6 +14,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.TokenGranter;
+import org.springframework.security.oauth2.provider.refresh.RefreshTokenGranter;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -124,9 +126,12 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
 //        endpoints.tokenServices(myTokenServices);
         //配置AuthenticationManager
 //        endpoints.authenticationManager(myAuthenticationManager);
+        //给生成的token添加一些自定义信息
 //        TokenEnhancerChain chain = new TokenEnhancerChain();
 //        chain.setTokenEnhancers(Arrays.asList(myTokenEnhancer(), jwtTokenEnhancer()));
 //        endpoints.tokenEnhancer(chain);
+        //配置生成token的策略
+//        endpoints.tokenGranter(new RefreshTokenGranter());
     }
 
 
