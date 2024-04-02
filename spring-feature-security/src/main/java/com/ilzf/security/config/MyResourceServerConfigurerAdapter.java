@@ -2,8 +2,7 @@ package com.ilzf.security.config;
 
 import com.ilzf.security.handler.FailHandler;
 import com.ilzf.security.handler.SuccessHandler;
-import com.ilzf.security.service.MyTokenServices;
-import com.ilzf.security.store.MyStore;
+import com.ilzf.security.store.MyTokenStore;
 import com.ilzf.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +15,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.http.HttpServletRequest;
@@ -92,7 +90,7 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     }
 
     @Autowired
-    MyStore myStore;
+    MyTokenStore myStore;
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

@@ -15,7 +15,7 @@ import java.util.Collection;
  * TokenStore的初始化在发生在AuthorizationServerEndpointsConfigurer中，默认的TokenStore是InMemoryTokenStore
  */
 @Component
-public class MyStore extends InMemoryTokenStore {
+public class MyTokenStore extends InMemoryTokenStore {
 
 
     //根据token读取认证信息

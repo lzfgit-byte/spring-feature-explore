@@ -1,9 +1,8 @@
 package com.ilzf.security.service;
 
 import com.ilzf.security.manage.MyAuthenticationManager;
-import com.ilzf.security.store.MyStore;
+import com.ilzf.security.store.MyTokenStore;
 import com.ilzf.util.LogUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -13,7 +12,6 @@ import org.springframework.security.oauth2.provider.TokenRequest;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.stereotype.Component;
 
 /**
  * TokenServices控制token的服务
@@ -39,7 +37,7 @@ public class MyTokenServices extends DefaultTokenServices {
     //    @Autowired
     MyAuthenticationManager myAuthenticationManager;
     //    @Autowired
-    MyStore tokenStore;
+    MyTokenStore tokenStore;
     //    @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -49,7 +47,7 @@ public class MyTokenServices extends DefaultTokenServices {
         super.setTokenEnhancer(new TokenEnhancerChain());
     }
 
-    @Autowired
+    //    @Autowired
     public void setTokenStore(TokenStore tokenStore) {
         LogUtil.log("setTokenStore");
         super.setTokenStore(tokenStore);

@@ -1,10 +1,8 @@
 package com.ilzf.security.config;
 
-import com.ilzf.security.manage.MyAuthenticationManager;
 import com.ilzf.security.service.MyClientDetailsServer;
-import com.ilzf.security.service.MyTokenServices;
 import com.ilzf.security.service.MyUserDetailService;
-import com.ilzf.security.store.MyStore;
+import com.ilzf.security.store.MyTokenStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -22,7 +20,7 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     @Autowired
     MyClientDetailsServer myClientDetailsServer;
     @Autowired
-    MyStore myStore;
+    MyTokenStore myStore;
     @Autowired
     MyUserDetailService myUserDetailService;
     /**
