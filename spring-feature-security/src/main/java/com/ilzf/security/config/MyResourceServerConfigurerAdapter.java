@@ -1,16 +1,14 @@
 package com.ilzf.security.config;
 
 import com.ilzf.security.constant.SecurityInfo;
+import com.ilzf.security.entryPoint.MyResourceAuthenticationEntryPoint;
 import com.ilzf.security.handler.LoginFailHandler;
 import com.ilzf.security.handler.LoginSuccessHandler;
 import com.ilzf.security.store.MyTokenStore;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
@@ -94,7 +92,7 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     MyTokenStore myStore;
 
     /**
-     * 这里配置oauth2的一些基本信息
+     * 这里配置oauth2的一些基本信息。
      */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -108,6 +106,8 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
          * Authorization: Bearer {tokenValue}
          */
         resources.tokenExtractor(new BearerTokenExtractor());
+        //当oauth2 token过期等错误是，走该处端点
+        resources.authenticationEntryPoint(new MyResourceAuthenticationEntryPoint());
 
     }
 }

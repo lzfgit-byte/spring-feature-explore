@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class MyResourceAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        LogUtil.log("MyAuthenticationEntryPoint");
+        LogUtil.log("MyResourceAuthenticationEntryPoint");
         response.getWriter().write("6");
     }
 }

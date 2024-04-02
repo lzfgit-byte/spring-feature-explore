@@ -1,7 +1,7 @@
 package com.ilzf.security.config;
 
 import com.ilzf.security.enhancer.MyTokenEnhancer;
-import com.ilzf.security.entryPoint.MyAuthenticationEntryPoint;
+import com.ilzf.security.entryPoint.MySecurityAuthenticationEntryPoint;
 import com.ilzf.security.service.MyClientDetailsServer;
 import com.ilzf.security.service.MyUserDetailService;
 import com.ilzf.security.store.MyTokenStore;
@@ -11,17 +11,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.TokenGranter;
-import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
-import org.springframework.security.oauth2.provider.refresh.RefreshTokenGranter;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
-import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import java.util.Arrays;
@@ -96,8 +91,10 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         super.configure(security);
-        //TODO 配置自己的，暂时不走
-        security.authenticationEntryPoint(new MyAuthenticationEntryPoint());
+        // 是
+        security
+                .allowFormAuthenticationForClients()
+                .authenticationEntryPoint(new MySecurityAuthenticationEntryPoint());
 //        security.allowFormAuthenticationForClients()//允许客户表单认证
 //                .passwordEncoder(passwordEncoder)//设置oauth_client_details中的密码编码器
 //                .tokenKeyAccess("permitAll()") // 开启/oauth/token_key验证端口无权限访问
