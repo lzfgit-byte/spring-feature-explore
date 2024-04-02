@@ -67,7 +67,7 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
                          * 此处判断对那些请求进行权限校验
                          */
                         String requestURI = request.getRequestURI();
-                        LogUtil.log("requestURI", requestURI);
+//                        LogUtil.log("requestURI", requestURI);
                         if (antPathMatcher.match("/api/logout", requestURI)) {
                             return false;
                         }

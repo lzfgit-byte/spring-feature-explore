@@ -29,8 +29,8 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         MyUser principal = (MyUser) authentication.getPrincipal();
         //集成oauth2 生成bear token
         //生成token
-        String clientId = request.getParameter("client_id");
-        String clientSecret = request.getParameter("client_secret");
+        String clientId = "client";
+        String clientSecret = "clientSecret";
 
         //登录成功，生成单点登录token
         MyClientDetailsServer bean = ApplicationContextHolder.getContext().getBean(MyClientDetailsServer.class);

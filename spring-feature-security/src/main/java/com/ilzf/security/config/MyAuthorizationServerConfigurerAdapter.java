@@ -47,12 +47,7 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         super.configure(clients);
         clients.withClientDetails(myClientDetailsServer);
-        clients.inMemory()
-                .withClient("client")   // client_id
-                .secret("secret")       // client_secret
-                .authorizedGrantTypes("authorization_code")     // 该client允许的授权类型
-                .scopes("app")     // 允许的授权范围
-                .autoApprove(true); //登录后绕过批准询问(/oauth/confirm_access)
+        myClientDetailsServer.loadClientDetails();
     }
 
     /**

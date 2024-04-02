@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.security.oauth2.provider.client.InMemoryClientDetailsService;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,6 +17,13 @@ import java.util.Map;
 @Component
 public class MyClientDetailsServer extends InMemoryClientDetailsService {
 
+    public void loadClientDetails() {
+        Map<String, ClientDetails> store = new HashMap<>();
+        store.put("client", new BaseClientDetails("client", "pp", "app", "all", "all"));
+        store.put("client2", new BaseClientDetails("client2", "pp", "app", "all", "all"));
+        store.put("client3", new BaseClientDetails("client3", "pp", "app", "all", "all"));
+        this.setClientDetailsStore(store);
+    }
 
     @Override
     public void setClientDetailsStore(Map<String, ? extends ClientDetails> clientDetailsStore) {
@@ -26,6 +34,7 @@ public class MyClientDetailsServer extends InMemoryClientDetailsService {
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         LogUtil.log("loadClientByClientId");
-        return new BaseClientDetails("client", "pp", "app", "all", "all");
+//        super.loadClientByClientId(clientId);
+        return super.loadClientByClientId(clientId);
     }
 }
