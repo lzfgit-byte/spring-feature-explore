@@ -20,87 +20,91 @@ public class MyTokenStore extends InMemoryTokenStore {
 
     //根据token读取认证信息
     @Override
-    public OAuth2Authentication readAuthentication(OAuth2AccessToken oAuth2AccessToken) {
+    public OAuth2Authentication readAuthentication(OAuth2AccessToken token) {
         LogUtil.log("readAuthentication");
-        return super.readAuthentication(oAuth2AccessToken);
+        return super.readAuthentication(token);
     }
 
     @Override
-    public OAuth2Authentication readAuthentication(String s) {
+    public OAuth2Authentication readAuthentication(String token) {
         LogUtil.log("readAuthentication");
-        return super.readAuthentication(s);
+        return super.readAuthentication(token);
     }
 
     //存储token
     @Override
-    public void storeAccessToken(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
+    public void storeAccessToken(OAuth2AccessToken token, OAuth2Authentication oAuth2Authentication) {
         LogUtil.log("storeAccessToken");
-        super.storeAccessToken(oAuth2AccessToken, oAuth2Authentication);
+        super.storeAccessToken(token, oAuth2Authentication);
     }
 
     //从存储中读取访问令牌
     @Override
-    public OAuth2AccessToken readAccessToken(String s) {
+    public OAuth2AccessToken readAccessToken(String tokenValue) {
         LogUtil.log("readAccessToken");
-        return super.readAccessToken(s);
+        return super.readAccessToken(tokenValue);
     }
 
     //从存储中删除访问令牌
     @Override
-    public void removeAccessToken(OAuth2AccessToken oAuth2AccessToken) {
+    public void removeAccessToken(OAuth2AccessToken accessToken) {
         LogUtil.log("removeAccessToken");
-        super.removeAccessToken(oAuth2AccessToken);
+        super.removeAccessToken(accessToken);
     }
 
     //将指定的刷新令牌存储在存储中
     @Override
-    public void storeRefreshToken(OAuth2RefreshToken oAuth2RefreshToken, OAuth2Authentication oAuth2Authentication) {
+    public void storeRefreshToken(OAuth2RefreshToken refreshToken, OAuth2Authentication authentication) {
         LogUtil.log("storeRefreshToken");
-        super.storeRefreshToken(oAuth2RefreshToken, oAuth2Authentication);
+        super.storeRefreshToken(refreshToken, authentication);
     }
 
     //从存储读取刷新令牌
     @Override
-    public OAuth2RefreshToken readRefreshToken(String s) {
+    public OAuth2RefreshToken readRefreshToken(String tokenValue) {
         LogUtil.log("readRefreshToken");
-        return super.readRefreshToken(s);
+        return super.readRefreshToken(tokenValue);
     }
 
     @Override
-    public OAuth2Authentication readAuthenticationForRefreshToken(OAuth2RefreshToken oAuth2RefreshToken) {
+    public OAuth2Authentication readAuthenticationForRefreshToken(OAuth2RefreshToken token) {
         LogUtil.log("readAuthenticationForRefreshToken");
-        return super.readAuthenticationForRefreshToken(oAuth2RefreshToken);
+        return super.readAuthenticationForRefreshToken(token);
     }
 
     //从存储中删除刷新令牌
     @Override
-    public void removeRefreshToken(OAuth2RefreshToken oAuth2RefreshToken) {
+    public void removeRefreshToken(OAuth2RefreshToken refreshToken) {
         LogUtil.log("removeRefreshToken");
-        super.removeRefreshToken(oAuth2RefreshToken);
+        super.removeRefreshToken(refreshToken);
     }
 
     @Override
-    public void removeAccessTokenUsingRefreshToken(OAuth2RefreshToken oAuth2RefreshToken) {
+    public void removeAccessTokenUsingRefreshToken(OAuth2RefreshToken refreshToken) {
         LogUtil.log("removeAccessTokenUsingRefreshToken");
-        super.removeAccessTokenUsingRefreshToken(oAuth2RefreshToken);
+        super.removeAccessTokenUsingRefreshToken(refreshToken);
     }
 
     //根据认证信息获取token
     @Override
-    public OAuth2AccessToken getAccessToken(OAuth2Authentication oAuth2Authentication) {
+    public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
         LogUtil.log("getAccessToken");
-        return super.getAccessToken(oAuth2Authentication);
+        return super.getAccessToken(authentication);
     }
 
+    /**
+     * 根据clientId和userName获取token
+     */
     @Override
-    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(String s, String s1) {
+    public Collection<OAuth2AccessToken> findTokensByClientIdAndUserName(String clientId, String userName) {
         LogUtil.log("findTokensByClientIdAndUserName");
-        return super.findTokensByClientIdAndUserName(s, s1);
+        return super.findTokensByClientIdAndUserName(clientId, userName);
     }
 
+    //列出clientId下的所有token
     @Override
-    public Collection<OAuth2AccessToken> findTokensByClientId(String s) {
+    public Collection<OAuth2AccessToken> findTokensByClientId(String clientId) {
         LogUtil.log("findTokensByClientId");
-        return super.findTokensByClientId(s);
+        return super.findTokensByClientId(clientId);
     }
 }
