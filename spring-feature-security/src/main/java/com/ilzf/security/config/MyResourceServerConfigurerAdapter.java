@@ -1,5 +1,6 @@
 package com.ilzf.security.config;
 
+import com.ilzf.security.constant.SecurityInfo;
 import com.ilzf.security.handler.FailHandler;
 import com.ilzf.security.handler.SuccessHandler;
 import com.ilzf.security.store.MyTokenStore;
@@ -96,5 +97,6 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         super.configure(resources);
         resources.tokenStore(myStore);
+        resources.resourceId(SecurityInfo.RESOURCE_ID);
     }
 }

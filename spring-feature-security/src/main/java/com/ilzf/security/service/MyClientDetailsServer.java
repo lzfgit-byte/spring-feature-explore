@@ -1,5 +1,6 @@
 package com.ilzf.security.service;
 
+import com.ilzf.security.constant.SecurityInfo;
 import com.ilzf.util.LogUtil;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientRegistrationException;
@@ -19,9 +20,9 @@ public class MyClientDetailsServer extends InMemoryClientDetailsService {
 
     public void loadClientDetails() {
         Map<String, ClientDetails> store = new HashMap<>();
-        store.put("client", new BaseClientDetails("client", "pp", "app", "all", "all"));
-        store.put("client2", new BaseClientDetails("client2", "pp", "app", "all", "all"));
-        store.put("client3", new BaseClientDetails("client3", "pp", "app", "all", "all"));
+        store.put("client", new BaseClientDetails("client", SecurityInfo.RESOURCE_ID, "app", "all", "all"));
+        store.put("client2", new BaseClientDetails("client2", SecurityInfo.RESOURCE_ID, "app", "all", "all"));
+        store.put("client3", new BaseClientDetails("client3", SecurityInfo.RESOURCE_ID, "app", "all", "all"));
         this.setClientDetailsStore(store);
     }
 

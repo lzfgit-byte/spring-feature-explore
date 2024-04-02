@@ -5,12 +5,12 @@ import com.ilzf.security.service.MyUserDetailService;
 import com.ilzf.security.store.MyTokenStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 
 @Configuration
@@ -23,6 +23,8 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     MyTokenStore myStore;
     @Autowired
     MyUserDetailService myUserDetailService;
+    @Autowired
+    PasswordEncoder passwordEncoder;
     /**
      * 自定义一下两位，暂时不可行。自定义tokenserver会导致注入两个相同的bean、导致授权失败
      */
@@ -80,9 +82,9 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         super.configure(security);
 //        security.allowFormAuthenticationForClients()//允许客户表单认证
-//                .passwordEncoder(new BCryptPasswordEncoder())//设置oauth_client_details中的密码编码器
+//                .passwordEncoder(passwordEncoder)//设置oauth_client_details中的密码编码器
 //                .tokenKeyAccess("permitAll()") // 开启/oauth/token_key验证端口无权限访问
-//                .checkTokenAccess("isAuthenticated()")// 开启/oauth/check_token验证端口认证权限访问
+//                .checkTokenAccess("isAuthenticated()");// 开启/oauth/check_token验证端口认证权限访问
     }
 
     /**
