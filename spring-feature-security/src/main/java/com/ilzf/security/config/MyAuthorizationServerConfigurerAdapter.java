@@ -4,6 +4,7 @@ import com.ilzf.security.enhancer.MyTokenEnhancer;
 import com.ilzf.security.service.MyClientDetailsServer;
 import com.ilzf.security.service.MyUserDetailService;
 import com.ilzf.security.store.MyTokenStore;
+import com.ilzf.security.translator.MyWebResponseExceptionTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -122,6 +123,10 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
         endpoints.userDetailsService(myUserDetailService);
         //注入自己的tokenstore
         endpoints.tokenStore(myStore);
+        //设置oauth出异常时的处理 只是处理OAuth2Exception
+        endpoints.exceptionTranslator(new MyWebResponseExceptionTranslator());
+
+
         //控制token的声明周期
 //        endpoints.tokenServices(myTokenServices);
         //配置AuthenticationManager

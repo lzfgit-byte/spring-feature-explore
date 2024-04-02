@@ -19,8 +19,13 @@ public class MyClientDetailEntity extends BaseClientDetails {
         super(clientId, resourceIds, scopes, grantTypes, authorities, redirectUris);
     }
 
+    /**
+     * 授权有效时间是10秒
+     *
+     * @return
+     */
     public Integer getAccessTokenValiditySeconds() {
-        return 123456;
+        return 10;
     }
 
 }
