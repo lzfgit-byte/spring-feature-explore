@@ -1,8 +1,11 @@
 package com.ilzf.security.config;
 
 import com.ilzf.security.manage.MyAuthenticationManager;
+import com.ilzf.security.service.MyAuthorizationServerTokenServices;
 import com.ilzf.security.service.MyClientDetailsServer;
+import com.ilzf.security.service.MyTokenServices;
 import com.ilzf.security.service.MyUserDetailService;
+import com.ilzf.security.store.MyStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -17,6 +20,13 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerConfigurerAdapter {
 
+    @Autowired
+    MyClientDetailsServer myClientDetailsServer;
+    @Autowired
+    MyStore myStore;
+    @Autowired
+    MyTokenServices myTokenServices;
+
     /**
      * 用来配置客户端详情服务（ClientDetailsService），
      * 客户端详情信息在这里进行初始化，你能够把客户端详情信息写死在这里或者是通过数据库来存储调取详情信息。
@@ -28,8 +38,6 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
      * @param clients
      * @throws Exception
      */
-    @Autowired
-    MyClientDetailsServer myClientDetailsServer;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -102,6 +110,8 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
         //将userDetailsService直接声明为bean也是可行的
         endpoints.userDetailsService(new MyUserDetailService());
         //是否可以直接将tokenStore声明为bean
-        endpoints.tokenStore(new InMemoryTokenStore());
+        endpoints.tokenStore(myStore);
+        //控制token的声明周期
+        endpoints.tokenServices(myTokenServices);
     }
 }

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * oauth2 使用下，不使用此处配置spring security
+ * 资源配置，配置resource和springSecurity
  */
 @Configuration
 @EnableResourceServer
