@@ -1,10 +1,24 @@
 package com.ilzf.security.manage;
 
+import com.ilzf.security.service.MyUserDetailService;
 import com.ilzf.util.LogUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.SpringSecurityMessageSource;
+import org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 在获取authentication时 中间商处理
@@ -36,13 +50,31 @@ import org.springframework.stereotype.Component;
  * ProviderManager-->DaoAuthenticationProvider--->userDetail
  * ProviderManager是一个AuthenticationManager。控制授权。
  * ProviderManager委托给DaoAuthenticationProvider进行授权校验，该provider会调用userDetail进行校验
+ * <p>
+ * //
+ * 集成ProviderManager这一父类，需要修改父类的checkState。
+ * 类创建的时候会初始化父类调用方法，没有提供provider,导致错误。不能集成，改持有改类
  */
 @Component
+@DependsOn("myUserDetailService")
 public class MyAuthenticationManager implements AuthenticationManager {
+    @Autowired
+    MyUserDetailService myUserDetailService;
+
+    private final ProviderManager providerManager;
+
+
+    public MyAuthenticationManager() {
+        PreAuthenticatedAuthenticationProvider provider = new PreAuthenticatedAuthenticationProvider();
+        provider.setPreAuthenticatedUserDetailsService(new UserDetailsByNameServiceWrapper<>(myUserDetailService));
+        this.providerManager = new ProviderManager(Collections.singletonList(provider));
+    }
+
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         authentication.setAuthenticated(true);
         LogUtil.log("MyAuthenticationManager");
-        return authentication;
+        return this.providerManager.authenticate(authentication);
     }
 }

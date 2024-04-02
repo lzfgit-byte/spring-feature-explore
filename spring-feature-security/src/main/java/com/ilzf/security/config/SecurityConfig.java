@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -94,6 +95,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
 //        super.configure(http);
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder builder) throws Exception {
+        super.configure(builder);
+    }
+
     //TODO 自定义SecurityFilterChain后出现问题，待处理
     //@Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

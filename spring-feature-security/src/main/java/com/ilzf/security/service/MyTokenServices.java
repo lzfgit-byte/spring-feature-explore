@@ -1,12 +1,18 @@
 package com.ilzf.security.service;
 
+import com.ilzf.security.manage.MyAuthenticationManager;
+import com.ilzf.security.store.MyStore;
 import com.ilzf.util.LogUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.exceptions.InvalidTokenException;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.TokenRequest;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,9 +22,39 @@ import org.springframework.stereotype.Component;
  * <p>
  * <p>
  * 控制token的声明周期，创建，刷新，删除，获取
+ * <p>
+ * private int refreshTokenValiditySeconds = 2592000;
+ * private int accessTokenValiditySeconds = 43200;
+ * private boolean supportRefreshToken = false;
+ * private boolean reuseRefreshToken = true;
+ * private TokenStore tokenStore;
+ * private ClientDetailsService clientDetailsService;
+ * private TokenEnhancer accessTokenEnhancer;
+ * private AuthenticationManager authenticationManager;
+ * DefaultTokenServices持有authenticationManager，accessTokenEnhancer，clientDetailsService
  */
 @Component
 public class MyTokenServices extends DefaultTokenServices {
+
+    @Autowired
+    MyAuthenticationManager myAuthenticationManager;
+    @Autowired
+    MyStore tokenStore;
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    MyTokenServices() {
+        super.setAuthenticationManager(myAuthenticationManager);
+        super.setTokenStore(tokenStore);
+        super.setTokenEnhancer(new TokenEnhancerChain());
+    }
+
+    @Autowired
+    public void setTokenStore(TokenStore tokenStore) {
+        LogUtil.log("setTokenStore");
+        super.setTokenStore(tokenStore);
+    }
+
     /**
      * 控制token的声明周期，创建，刷新，获取
      */

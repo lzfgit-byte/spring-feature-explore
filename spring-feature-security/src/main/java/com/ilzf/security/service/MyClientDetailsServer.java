@@ -34,6 +34,6 @@ public class MyClientDetailsServer extends InMemoryClientDetailsService {
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         LogUtil.log("loadClientByClientId");
-        return new BaseClientDetails("postman", "pp", "app", "all", "all");
+        return new BaseClientDetails("client", "pp", "app", "all", "all");
     }
 }

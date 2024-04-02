@@ -29,10 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 @EnableResourceServer
 public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
 
-    @Autowired
-    MyTokenServices myTokenServices;
-    @Autowired
-    MyStore myStore;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -98,7 +94,5 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         super.configure(resources);
-        resources.tokenStore(myStore);
-        resources.tokenServices(myTokenServices);
     }
 }

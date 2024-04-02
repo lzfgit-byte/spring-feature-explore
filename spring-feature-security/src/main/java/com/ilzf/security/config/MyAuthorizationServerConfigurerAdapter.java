@@ -25,7 +25,7 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     MyStore myStore;
     @Autowired
     MyTokenServices myTokenServices;
-    @Autowired
+    //    @Autowired
     MyAuthenticationManager myAuthenticationManager;
 
     /**
@@ -107,14 +107,13 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         super.configure(endpoints);
         //
-        endpoints.authenticationManager(new MyAuthenticationManager());
-        //将userDetailsService直接声明为bean也是可行的
-        endpoints.userDetailsService(new MyUserDetailService());
+        //将userDetailsService直接声明为bean也是可行的。自定义authenticationManager的时候可以不用配置userDetailsService
+//        endpoints.userDetailsService(new MyUserDetailService());
         //是否可以直接将tokenStore声明为bean
-        endpoints.tokenStore(myStore);
+//        endpoints.tokenStore(myStore);
         //控制token的声明周期
         endpoints.tokenServices(myTokenServices);
         //配置AuthenticationManager
-        endpoints.authenticationManager(myAuthenticationManager);
+//        endpoints.authenticationManager(myAuthenticationManager);
     }
 }
