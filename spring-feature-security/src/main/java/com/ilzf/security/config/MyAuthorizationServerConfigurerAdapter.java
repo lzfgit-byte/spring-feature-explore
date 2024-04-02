@@ -1,9 +1,12 @@
 package com.ilzf.security.config;
 
+import com.ilzf.security.enhancer.MyTokenEnhancer;
 import com.ilzf.security.service.MyClientDetailsServer;
 import com.ilzf.security.service.MyUserDetailService;
 import com.ilzf.security.store.MyTokenStore;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -11,6 +14,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+
+import java.util.Arrays;
 
 
 @Configuration
@@ -115,5 +123,18 @@ public class MyAuthorizationServerConfigurerAdapter extends AuthorizationServerC
 //        endpoints.tokenServices(myTokenServices);
         //配置AuthenticationManager
 //        endpoints.authenticationManager(myAuthenticationManager);
+//        TokenEnhancerChain chain = new TokenEnhancerChain();
+//        chain.setTokenEnhancers(Arrays.asList(myTokenEnhancer(), jwtTokenEnhancer()));
+//        endpoints.tokenEnhancer(chain);
+    }
+
+    @Bean
+    @Qualifier("myTokenEnhancer")
+    public TokenEnhancer myTokenEnhancer() {
+        return new MyTokenEnhancer();
+    }
+
+    public TokenEnhancer jwtTokenEnhancer() {
+        return new JwtAccessTokenConverter();
     }
 }

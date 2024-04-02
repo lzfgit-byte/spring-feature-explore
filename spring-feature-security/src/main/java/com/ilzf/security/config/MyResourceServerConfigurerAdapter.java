@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.authentication.BearerTokenExtractor;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.AntPathMatcher;
 
@@ -34,6 +35,7 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -106,5 +108,6 @@ public class MyResourceServerConfigurerAdapter extends ResourceServerConfigurerA
          * Authorization: Bearer {tokenValue}
          */
         resources.tokenExtractor(new BearerTokenExtractor());
+
     }
 }
