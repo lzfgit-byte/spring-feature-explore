@@ -52,7 +52,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         Map<String, Object> res = new HashMap<>();
         res.put("msg", "登录成功");
         res.put("code", 200);
-        res.put("data", principal);
+        res.put("data", objectMapper.writeValueAsString(principal));
         res.put("token", objectMapper.writeValueAsString(token));
         response.getWriter().println(res);
     }
