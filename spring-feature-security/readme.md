@@ -33,5 +33,9 @@
         1. 默认是InMemoryClientDetailsService
         2. 设置自定义的ClientDetailsServer可以将clientDetail存储在任何地方
         3. 根据clientId获取clientDetail
-4.  
-
+4. 代码流程+业务代码接入点(重写量少的情况)
+    1. spring security认证成功后走successHandler
+    2. 在此处根据client_id，获取clientDetail
+    3. 然后进行oauth2认证授权
+    4. 重新定义tokenStore，userDetail,userDetailsService,clientDetail，clientDetailsService
+        1. 单纯定义以上组件，便可以实现token存储，刷新，登录验证等
