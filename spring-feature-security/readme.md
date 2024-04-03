@@ -7,14 +7,14 @@
         1. 此处配置spring security
         2. 配置resources资源。全局的异常处理，token提取规则，当前服务的resourceid等
         3. 可以在此处配置全局异常处理，来处理鉴权失败后的响应
-3. 组件解释
+3. 组件解释,oauth2
     1. **tokenStore**：存储oauth2生成的token的位置，默认是InMemoryTokenStore
         1. 此处可以做token定时刷新，当一个请求进来后，重置token失效时间
         2. 定义tokenStore可以实现大部分功能。比如redis存储token位置。
     2. **TokenServices**：程序访问token的入口，程序一般不直接访问tokenStore.
         1. 默认是DefaultTokenServices
         2.
-        DefaultTokenServices持有authenticationManager，accessTokenEnhancer，clientDetailsService。如果对以上都有自定义的需求，可以自定义tokenServers来实现，不需要重复配置
+       DefaultTokenServices持有authenticationManager，accessTokenEnhancer，clientDetailsService。如果对以上都有自定义的需求，可以自定义tokenServers来实现，不需要重复配置
         3. DefaultTokenServices整合了三家的token处理工作
             1. AuthorizationServerTokenServices
             2. ResourceServerTokenServices
@@ -33,5 +33,5 @@
         1. 默认是InMemoryClientDetailsService
         2. 设置自定义的ClientDetailsServer可以将clientDetail存储在任何地方
         3. 根据clientId获取clientDetail
-    7. 
+4.  
 
