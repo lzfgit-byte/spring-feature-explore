@@ -1,10 +1,10 @@
 package com.ilzf.mybatis;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@SpringBootConfiguration
+@SpringBootApplication
 @EnableWebMvc
 public class MybatisExploreApplication {
     public static void main(String[] args) {
