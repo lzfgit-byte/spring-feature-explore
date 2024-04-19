@@ -21,6 +21,7 @@
         <ilzf.util.version>1.0-SNAPSHOT</ilzf.util.version>
         <spring.feature.event.version>1.0-SNAPSHOT</spring.feature.event.version>
         <spring.feature.web.version>1.0-SNAPSHOT</spring.feature.web.version>
+        <spring.feature.init.version>1.0-SNAPSHOT</spring.feature.init.version>
         <knife4j.version>4.4.0</knife4j.version>
         <spring.aop.version>3.2.3</spring.aop.version>
         <spring.actuator.version>3.2.3</spring.actuator.version>
@@ -50,6 +51,7 @@
         <module>spring-feature-spring-cloud</module>
         <module>spring-feature-security</module>
         <module>spring-feature-mybatis</module>
+        <module>spring-feature-init</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -82,6 +84,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${spring.aop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>spring-feature-init</artifactId>
+                <version>${spring.feature.init.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
