@@ -13,3 +13,10 @@ ilzf:
   swagger:
     group-name: 测试mybatis
     package-path: com.ilzf.mybatis.controller
+
+##    driver-class-name: org.sqlite.JDBC
+##      url: jdbc:sqlite:D:\\eclipse-workspace\v2-goview-bate\sqllite\goview.db
+      #linux服务器
+      #url: jdbc:sqlite://home/cqfy/project/OSSDATABASE/oss.db
+##      username:
+##      password:
